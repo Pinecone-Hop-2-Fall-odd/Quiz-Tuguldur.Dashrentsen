@@ -14,7 +14,7 @@ app.use(express.json());
 app.post("/user", (request, response) => {
   const body = request.body;
   console.log(body);
-  fs.readFile("./data/user.json", (readError, data) => {
+  fs.readFile("./data.json", (readError, data) => {
     if (readError) {
       response.json({
         status: "read file error",
@@ -24,14 +24,17 @@ app.post("/user", (request, response) => {
     let savedData = JSON.parse(data);
     const newUser = {
       id: Date.now().toString(),
-      name: body.name,
-      age: body.age,
+      userName: body.userName,
+      firstName: body.firstName,
+      lastName: body.lastName,
+      password:body.password,
+      email:body.email
     };
  
     savedData.push(newUser);
  
     fs.writeFile(
-      "./data/user.json",
+      "./data.json",
       JSON.stringify(savedData),
       (writeError) => {
         if (writeError) {
@@ -51,14 +54,34 @@ app.post("/user", (request, response) => {
  
 //get
  
-app.get("/user", (request, response) => {
-  fs.readFile("./data/user.json", (readError, data) => {
+app.get("/alluser", (request, response) => {
+  fs.readFile("./data.json", (readError, data) => {
     if (readError) {
       response.json({
         status: "error",
       });
     } else {
-      const user = JSON.parse(data);
+      const allUser = JSON.parse(data);
+ 
+      response.json({
+        status: "success",
+        data: allUser,
+      });
+    }
+  });
+});
+app.get("/user", (request, response) => {
+  const body = request.body;
+  fs.readFile("./data.json", (readError, data) => {
+    if (readError) {
+      response.json({
+        status: "error",
+      });
+    } else {
+      const allUser = JSON.parse(data);
+      const user = allUser.filter((user) => {
+          user.email == {body:email }
+      })
  
       response.json({
         status: "success",
@@ -73,7 +96,7 @@ app.get("/user", (request, response) => {
  
 app.delete("/user/:id", (request, response) => {
   const body = request.params;
-  fs.readFile("./data/user.json", "utf-8", (readError, data) => {
+  fs.readFile("./data.json", "utf-8", (readError, data) => {
     let savedData = JSON.parse(data);
     if (readError) {
       response.json({
@@ -82,7 +105,7 @@ app.delete("/user/:id", (request, response) => {
     }
     const deletedData = savedData.filter((d) => d.id !== body.id);
     fs.writeFile(
-      "./data/user.json",
+      "./data.json",
       JSON.stringify(deletedData),
       (writeError) => {
         if (writeError) {
@@ -106,7 +129,7 @@ app.put("/user/:id", (request, response) => {
   const userId = request.params.id;
   const body = request.body;
  
-  fs.readFile("./data/user.json", "utf-8", (readError, data) => {
+  fs.readFile("./data.json", "utf-8", (readError, data) => {
     if (readError) {
       return response.status(500).json({
         status: "read file error",
@@ -124,7 +147,7 @@ app.put("/user/:id", (request, response) => {
     });
  
     fs.writeFile(
-      "./data/user.json",
+      "./data.json",
       JSON.stringify(updatedData),
       (writeError) => {
         if (writeError) {
