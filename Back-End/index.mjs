@@ -54,7 +54,7 @@ app.post("/user", (request, response) => {
  
 //get
  
-app.get("/alluser", (request, response) => {
+app.get("/allUser", (request, response) => {
   fs.readFile("./data.json", (readError, data) => {
     if (readError) {
       response.json({
@@ -78,14 +78,15 @@ app.get("/user", (request, response) => {
         status: "error",
       });
     } else {
+      const Email = body.email
       const allUser = JSON.parse(data);
       const user = allUser.filter((user) => {
-          user.email == {body:email }
+          user.email === Email
       })
  
       response.json({
         status: "success",
-        data: user,
+        data: user
       });
     }
   });
