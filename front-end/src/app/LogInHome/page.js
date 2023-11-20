@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -32,12 +32,16 @@ export default function LogIn() {
           id="emailInput"
           name="emailInput"
           placeholder="Email"
+          id="emailInput"
+          name="emailInput"
+          placeholder="Email"
           className="text-[20px] bg-gray border-solid border-gray border-[1px] w-[350px] h-[60px] "
           onChange={(e) =>
             setLoginData((prev) => ({ ...prev, email: e.target.value }))
           }
         ></input>
         <input
+          value={body.password}
           type="text"
           id="passwordInput"
           name="passwordInput"
@@ -54,7 +58,7 @@ export default function LogIn() {
         >
           Log In
         </button>
-      </div>
+      </form>
     </div>
   );
 }
