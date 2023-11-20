@@ -1,60 +1,30 @@
 "use client";
 
-import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation'
+import axios from "axios"
 
 export default function SignUp() {
-  const BE_URL = "http://localhost:8080/user";
-  const [users, setUsers] = useState([]);
-  const router = useRouter()
-  const [newUser, setNewUser] = useState({
-    userName: "",
-    firstName: "",
-    lastName: "",
-    password: "",
-    email: ""
-  });
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const [signUpData, setSignUpData] = useState({});
+  const router = useRouter();
 
-  async function fetchData() {
-    try {
-      const response = await fetch(BE_URL);
-      const data = await response.json();
-      setUsers(data.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
+  const handleSignUp = async () => {
+    const { data } = await axios.post("http://localhost:8000/user", {
+      email: signUpData.email,
+      password: signUpData.password,
+      userName: signUpData.userName
+    });
+    if (data?.user) {
+      localStorage.setItem("uid", data.user.id);
+      router.push("../LogInHome");
     }
-  }
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    try {
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUser),
-      };
-
-      await fetch(BE_URL, options);
-      setNewUser({ userName: "", firstName: "", lastName: "", password: "",email: "" });
-      fetchData();
-    } catch (error) {
-      console.error("Error submitting data:", error);
-    }
-    router.push("LogInHome");
-
-  }
+    console.log(signUpData);
+  };
 
   return (
     <div className="bg-gray w-screen h-screen flex justify-center items-center">
-      <form
-        onSubmit={handleSubmit}
+      <div
         className="w-[600px] h-[700px] bg-white border-[1px] border-black border-solid  flex flex-col items-center pt-[20px] gap-[40px] "
       >
         <h1 className="text-[40px]">Sign in to the game</h1>
@@ -64,54 +34,40 @@ export default function SignUp() {
           name="usernameInput"
           placeholder="Username"
           className="text-[20px] bg-gray border-solid border-gray border-[1px] w-[350px] h-[60px] "
-          value={newUser.userName}
-          onChange={(e) => setNewUser({ ...newUser, userName: e.target.value })}
-        ></input>
-        <input
-          type="text"
-          id="firstNameInput"
-          name="firstNameInput"
-          placeholder="FirstName"
-          className="text-[20px] bg-gray border-solid border-gray border-[1px] w-[350px] h-[60px] "
-          value={newUser.firstName}
+          value={signUpData.userName}
           onChange={(e) =>
-            setNewUser({ ...newUser, firstName: e.target.value })
+            setSignUpData((prev) => ({ ...prev, userName: e.target.value }))
           }
         ></input>
         <input
-          type="text"
-          id="lastNameInput"
-          name="lastNameInput"
-          placeholder="LastName"
-          className="text-[20px] bg-gray border-solid border-gray border-[1px] w-[350px] h-[60px] "
-          value={newUser.lastName}
-          onChange={(e) => setNewUser({ ...newUser, lastName: e.target.value })}
-        ></input>
-        <input
-          value={newUser.password}
+          value={signUpData.password}
           type="text"
           id="passwordInput"
           name="passwordInput"
           placeholder="Password"
           className="text-[20px] bg-gray border-solid border-gray border-[1px] w-[350px] h-[60px] "
-          onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+          onChange={(e) =>
+            setSignUpData((prev) => ({ ...prev, password: e.target.value }))
+          }
         ></input>
         <input
-          value={newUser.email}
+          value={signUpData.email}
           type="text"
           id="emailInput"
           name="emailInput"
           placeholder="Email"
           className="text-[20px] bg-gray border-solid border-gray border-[1px] w-[350px] h-[60px] "
-          onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+          onChange={(e) =>
+            setSignUpData((prev) => ({ ...prev, email: e.target.value }))
+          }
         ></input>
         <button
-          type="Submit"
           className="text-white bg-[#1A8BBB] w-[350px] h-[60px]"
+          onClick={handleSignUp}
         >
           Sign up
         </button>
-      </form>
+      </div>
     </div>
   );
 }
