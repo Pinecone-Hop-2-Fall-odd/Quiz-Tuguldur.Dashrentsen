@@ -15,11 +15,8 @@ export default function SignUp() {
       password: signUpData.password,
       userName: signUpData.userName
     });
-    if (data?.user) {
-      localStorage.setItem("uid", data.user.id);
-      router.push("../LogInHome");
-    }
-    console.log(signUpData);
+    router.push("../LogInHome");
+    console.log(data);
   };
 
   return (

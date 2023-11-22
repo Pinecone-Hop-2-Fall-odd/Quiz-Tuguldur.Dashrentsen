@@ -2,25 +2,27 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { ProfileIcon } from "@/assets/icons/profile-icon";
 
 export default function HomePage() {
+  useEffect(() => {
+    const uid = localStorage.getItem("uid");
+
+    if (uid === null) {
+      router.push("/login");
+    }
+  }, []);
+
   return (
     <div class="relative bg-white w-screen h-screen flex justify-center">
       <div className="gap-[1800px] items-center pr-[10px] justify-end pt-[10px] flex flex-row w-screen h-[100px] bg-[#1A8BBB]">
         <div className="flex flex-row w-auto h-auto ">
-          <h1 className="text-white font-extrabold text-[25px]">2goo_No Quiz.io</h1>
+          <h1 className="text-white font-extrabold text-[25px]">
+            2goo_No Quiz.io
+          </h1>
         </div>
         <div className="flex w-auto gap-[10px]">
-          <Link href="../SignUpHome">
-            <button className="rounded-[20px] right-[10px] top-[10px] bg-white w-[100px] h-[50px]">
-              Sign Up
-            </button>
-          </Link>
-          <Link href="../LogInHome">
-            <button className="rounded-[20px] right-[10px] top-[10px] bg-white w-[100px] h-[50px]">
-              Log In
-            </button>
-          </Link>
+        <ProfileIcon /> 
         </div>
       </div>
       <div className="items-center absolute bottom-[600px] flex gap-[10px] flex-col">
