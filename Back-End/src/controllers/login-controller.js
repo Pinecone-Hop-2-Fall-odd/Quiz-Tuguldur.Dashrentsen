@@ -1,8 +1,9 @@
-import { users } from "./user-controller.js";
+import { UserModel } from "../models/user-model.js";
 
-export const login = (req, res) => {
+export const login = async (req, res) => {
     // password, email
     const body = req.body;
+    console.log(body);
 
     if (body.email === undefined) {
         res.status(403).json({ message: "Email required" })
@@ -13,15 +14,17 @@ export const login = (req, res) => {
         return;
     }
 
-    const filteredUser = users.filter((cur) => cur.email === body.email);
+    const user = await UserModel.find({ email: body.email });
+    console.log(user);
+    console.log(user[0].password);
+    console.log(body.password);
 
-    if (filteredUser.length === 0) {
+    if (user.length === 0) {
         res.status(405).json({ message: "User not found" });
     } else {
-        const user = filteredUser[0];
 
-        if (user.password === body.password) {
-            res.status(200).json({ user: user });
+        if (user[0].password === body.password) {
+            res.status(200).json({ user: user[0] });
             return;
         } else {
             res.status(406).json({ message: "Password not match" });

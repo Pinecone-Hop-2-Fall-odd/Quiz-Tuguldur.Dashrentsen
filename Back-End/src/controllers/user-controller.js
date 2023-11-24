@@ -1,31 +1,35 @@
-export const users = [
-  {id: 1700649791140, userName: "aaa", password: "aaa", email: "aaa@gmail.com"}];
+import { UserModel } from "../models/user-model.js";
 
-export const getAllUsers = (req, res) => {
-  res.status(200).json({ users: users });
+export const getAllUsers = async (req, res) => {
+  const users_data = await UserModel.find({});
+  res.status(200).json({ users: users_data });
 };
 
-export const getUser = (req, res) => {
+export const getUser = async (req, res) => {
   const params = req.params;
-  const filteredUser = users.filter((cur) => cur.id === Number(params.id));
-  
+  const user = await UserModel.find({ _id: params.id });
+  console.log(user);
+  // const users_data = await UserModel.findById("adiosajdoisa");
 
-  if (filteredUser.length === 0) {
+
+  if (user.length === 0) {
     res.status(405).json({ message: "User not found" });
   } else {
-    res.status(200).json({ user: filteredUser });
+    res.status(200).json({ user:user });
   }
 };
 
-export const createUser = (req, res) => {
+export const createUser = async (req, res) => {
   const body = req.body;
+  console.log(body)
 
-  const newUser = {
-    id: new Date().getTime(),
+  await UserModel.create({
     userName: body.userName,
     password: body.password,
     email: body.email,
-  };
-  users.push(newUser);
-  res.status(200).json({ users: users });
+    createdOn: new Date(),
+});
+const users = await UserModel.find();
+
+  res.status(200).json({ users: users});
 };

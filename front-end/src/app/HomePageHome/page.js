@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ProfileIcon } from "@/assets/icons/profile-icon";
+import { useRouter } from 'next/navigation'
 
 export default function HomePage() {
+  const router = useRouter()
   useEffect(() => {
     const uid = localStorage.getItem("uid");
 
@@ -12,6 +14,10 @@ export default function HomePage() {
       router.push("/login");
     }
   }, []);
+
+  function pageJump(){
+    router.push("/userProfileHome")
+  }
 
   return (
     <div class="relative bg-white w-screen h-screen flex justify-center">
@@ -21,7 +27,7 @@ export default function HomePage() {
             2goo_No Quiz.io
           </h1>
         </div>
-        <div className="flex w-auto gap-[10px]">
+        <div onClick={pageJump} className="flex w-auto gap-[10px]">
         <ProfileIcon /> 
         </div>
       </div>

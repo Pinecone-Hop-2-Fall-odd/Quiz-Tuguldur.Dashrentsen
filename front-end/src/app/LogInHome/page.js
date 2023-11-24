@@ -13,8 +13,9 @@ export default function LogIn() {
       email: loginData.email,
       password: loginData.password,
     });
+    console.log(data);
     if (data?.user) {
-      localStorage.setItem("uid", data.user.id);
+      localStorage.setItem("uid", data.user._id);
       router.push("/");
     }
   };
