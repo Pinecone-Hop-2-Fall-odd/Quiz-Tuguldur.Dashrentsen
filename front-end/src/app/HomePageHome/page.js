@@ -31,7 +31,7 @@ export default function HomePage() {
         <ProfileIcon /> 
         </div>
       </div>
-      <div className="items-center absolute bottom-[600px] flex gap-[10px] flex-col">
+      <div className="items-center absolute bottom-[27vh] flex gap-[10px] flex-col">
         <h1 className="text-[#50566B] text-[100px] font-semibold">Quiz.Play</h1>
         <Link href="./QuizPlayHome">
           <button className=" w-[400px] h-[85px] text-white h-[100px] bg-[#1A8BBB] text-[60px] font-medium">
