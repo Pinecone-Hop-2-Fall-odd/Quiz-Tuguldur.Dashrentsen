@@ -18,11 +18,14 @@ export default function SignUp() {
     router.push("../LogInHome");
     console.log(data);
   };
+  function jumpLogIn(){
+    router.push("/LogInHome")
+  }
 
   return (
     <div className="bg-gray w-screen h-screen flex justify-center items-center">
       <div
-        className="w-[600px] h-[700px] bg-white border-[1px] border-black border-solid  flex flex-col items-center pt-[20px] gap-[40px] "
+        relative className="w-[600px] h-[600px] bg-white border-[1px] border-black border-solid  flex flex-col items-center pt-[20px] gap-[40px] "
       >
         <h1 className="text-[40px]">Sign in to the game</h1>
         <input
@@ -64,6 +67,7 @@ export default function SignUp() {
         >
           Sign up
         </button>
+        <button onClick={jumpLogIn} className="text-[#1A8BBB] absolute top-[783px] right-[990px] text-[15px] bg-white">Log In</button>
       </div>
     </div>
   );

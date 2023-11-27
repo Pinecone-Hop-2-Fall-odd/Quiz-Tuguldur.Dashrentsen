@@ -11,7 +11,7 @@ export default function HomePage() {
     const uid = localStorage.getItem("uid");
 
     if (uid === null) {
-      router.push("/login");
+      router.push("/LogInHome");
     }
   }, []);
 

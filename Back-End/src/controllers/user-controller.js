@@ -17,6 +17,7 @@ export const getUser = async (req, res) => {
   } else {
     res.status(200).json({ user:user });
   }
+  console.log(user);
 };
 
 export const createUser = async (req, res) => {
