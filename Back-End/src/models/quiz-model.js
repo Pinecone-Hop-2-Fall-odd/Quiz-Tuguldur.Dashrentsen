@@ -1,43 +1,41 @@
 import mongoose from "mongoose";
 
 const quizSchema = new mongoose.Schema({
-  userName: String,
-  password: String,
-  email: { type: String, unique: true },
-  createdOn: Date,
+  question: String,
+  answers: [{ answer: String, isCorrect: Boolean }],
+  category: String,
 });
 
 export const QuizModel = mongoose.model("quiz", quizSchema);
 
-const quiz = [
-  {
-    question: "dsagdsiua"
-    [
-        {Aanswer :"ebjerb",correct:true},
-        {Banswer:"ouebvroeubr",correct:false},
-        {Canswer:"iuwgfeuw",correct:false},
-        {Danswer:"wouegfouh",correct:false}
-    ]
-  },
-  {
-    question: "dsagdsiua",
-    Aanswer :"ebjerb",
-    Banswer:"ouebvroeubr",
-    Canswer:"iuwgfeuw",
-    Danswer:"wouegfouh",
-  },
-  {
-    question: "dsagdsiua",
-    Aanswer :"ebjerb",
-    Banswer:"ouebvroeubr",
-    Canswer:"iuwgfeuw",
-    Danswer:"wouegfouh",
-  },
-  {
-    question: "dsagdsiua",
-    Aanswer :"ebjerb",
-    Banswer:"ouebvroeubr",
-    Canswer:"iuwgfeuw",
-    Danswer:"wouegfouh",
-  },
-];
+// const quiz = [
+//   {
+//     question: "dsagdsiua"[
+//       ({ Aanswer: "ebjerb", isCorrect: true },
+//       { Banswer: "ouebvroeubr", isCorrect: false },
+//       { Canswer: "iuwgfeuw", isCorrect: false },
+//       { Danswer: "wouegfouh", isCorrect: false })
+//     ],
+//   },
+//   {
+//     question: "dsagdsiua",
+//     Aanswer: "ebjerb",
+//     Banswer: "ouebvroeubr",
+//     Canswer: "iuwgfeuw",
+//     Danswer: "wouegfouh",
+//   },
+//   {
+//     question: "dsagdsiua",
+//     Aanswer: "ebjerb",
+//     Banswer: "ouebvroeubr",
+//     Canswer: "iuwgfeuw",
+//     Danswer: "wouegfouh",
+//   },
+//   {
+//     question: "dsagdsiua",
+//     Aanswer: "ebjerb",
+//     Banswer: "ouebvroeubr",
+//     Canswer: "iuwgfeuw",
+//     Danswer: "wouegfouh",
+//   },
+// ];

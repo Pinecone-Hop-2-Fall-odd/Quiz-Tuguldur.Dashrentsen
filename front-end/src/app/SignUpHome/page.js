@@ -1,31 +1,33 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/navigation'
-import axios from "axios"
+import { useRouter } from "next/navigation";
+import axios from "axios";
 
 export default function SignUp() {
-
   const [signUpData, setSignUpData] = useState({});
   const router = useRouter();
 
   const handleSignUp = async () => {
-    const { data } = await axios.post("http://localhost:8000/user", {
-      email: signUpData.email,
-      password: signUpData.password,
-      userName: signUpData.userName
-    });
-    router.push("../LogInHome");
+    const { data } = await axios
+      .post("http://localhost:8000/user", {
+        email: signUpData.email,
+        password: signUpData.password,
+        userName: signUpData.userName,
+      })
+      .catch((error) => alert("Email is already used"));
+      router.push("../LogInHome");
     console.log(data);
   };
-  function jumpLogIn(){
-    router.push("/LogInHome")
+  function jumpLogIn() {
+    router.push("/LogInHome");
   }
 
   return (
     <div className="bg-gray w-screen h-screen flex justify-center items-center">
       <div
-        relative className="w-[600px] h-[600px] bg-white border-[1px] border-black border-solid  flex flex-col items-center pt-[20px] gap-[40px] "
+        relative
+        className="w-[600px] h-[600px] bg-white border-[1px] border-black border-solid  flex flex-col items-center pt-[20px] gap-[40px] "
       >
         <h1 className="text-[40px]">Sign in to the game</h1>
         <input
@@ -67,7 +69,12 @@ export default function SignUp() {
         >
           Sign up
         </button>
-        <button onClick={jumpLogIn} className="text-[#1A8BBB] absolute top-[783px] right-[990px] text-[15px] bg-white">Log In</button>
+        <button
+          onClick={jumpLogIn}
+          className="text-[#1A8BBB] absolute top-[783px] right-[990px] text-[15px] bg-white"
+        >
+          Log In
+        </button>
       </div>
     </div>
   );

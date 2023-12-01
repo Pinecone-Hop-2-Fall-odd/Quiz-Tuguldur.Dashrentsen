@@ -7,6 +7,13 @@ import axios from "axios";
 export default function LogIn() {
   const [loginData, setLoginData] = useState({});
   const router = useRouter();
+  useEffect(() => {
+    const uid = localStorage.getItem("uid");
+
+    if (uid) {
+      router.push("/HomePageHome");
+    }
+  }, []);
 
   const handleLogin = async () => {
     const { data } = await axios.post("http://localhost:8000/login", {
