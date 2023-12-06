@@ -33,7 +33,7 @@ export default function HomePage() {
       </div>
       <div className="items-center absolute bottom-[27vh] flex gap-[10px] flex-col">
         <h1 className="text-[#50566B] text-[100px] font-semibold">Quiz.Play</h1>
-        <Link href="./QuizPlayHome">
+        <Link href="./CategoriesHome">
           <button className=" w-[400px] h-[85px] text-white h-[100px] bg-[#1A8BBB] text-[60px] font-medium" style={{borderRadius: "25px"}}>
             Play
           </button>

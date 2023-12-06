@@ -1,7 +1,7 @@
 import express from "express";
-import { createQuiz,getAllQuiz} from "../controllers/quiz-controller.js";
+import { createQuiz,getQuiz} from "../controllers/quiz-controller.js";
 
 export const quizRouter = express.Router();
 
-quizRouter.get('/allQuiz', getAllQuiz);
+quizRouter.get('/getQuiz/:category', getQuiz);
 quizRouter.post('/createQuiz', createQuiz);

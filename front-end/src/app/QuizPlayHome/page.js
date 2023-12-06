@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { Montserrat } from "next/font/google";
+import { useSearchParams } from 'next/navigation'
 
 export default function HomePage() {
+  const searchParams = useSearchParams()
   const router = useRouter();
   const [quizdata, setQuizData] = useState();
   const [counter, setCounter] = useState(0);
@@ -14,12 +15,12 @@ export default function HomePage() {
   const [userData, setUserData] = useState();
 
   const getData = async () => {
-    const userId = localStorage.getItem("uid");
-    const quizData = await axios.get("http://localhost:8000/allQuiz");
-    const userData = await axios.get(`http://localhost:8000/user/${userId}`);
+    // const userId = localStorage.getItem("uid");
+    const quizData = await axios.get(`http://localhost:8000/getQuiz/${searchParams.get("category")}`);
+    const userData = await axios.get(`http://localhost:8000/user/${localStorage.getItem("uid")}`);
     setQuizData(quizData);
     setUserData(userData);
-    console.log(userData);
+    console.log(quizData);
   };
 
   useEffect(() => {
