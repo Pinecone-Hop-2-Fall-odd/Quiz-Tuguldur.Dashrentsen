@@ -9,14 +9,14 @@ export default function SignUp() {
   const router = useRouter();
 
   const handleSignUp = async () => {
-    const { data } = await axios
+    const data  = await axios
       .post("http://localhost:8000/user", {
         email: signUpData.email,
         password: signUpData.password,
         userName: signUpData.userName,
       })
-      .catch((error) => alert("Email is already used"));
-      router.push("../LogInHome");
+      .catch((error) => console.log(error));
+      // router.push("../LogInHome");
     console.log(data);
   };
   function jumpLogIn() {

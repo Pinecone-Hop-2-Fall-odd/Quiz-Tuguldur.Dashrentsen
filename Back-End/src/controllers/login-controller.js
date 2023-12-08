@@ -1,9 +1,10 @@
 import { UserModel } from "../models/user-model.js";
+import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
 
 export const login = async (req, res) => {
     // password, email
     const body = req.body;
-    console.log(body);
 
     if (body.email === undefined) {
         res.status(403).json({ message: "Email required" })
@@ -14,20 +15,27 @@ export const login = async (req, res) => {
         return;
     }
 
-    const user = await UserModel.find({ email: body.email });
-    console.log(user);
-    console.log(user[0].password);
-    console.log(body.password);
+    const oneUser = await UserModel.findOne({ email: body.email });
+    console.log(body);
 
-    if (user.length === 0) {
+    if (!user) {
         res.status(405).json({ message: "User not found" });
     } else {
 
-        if (user[0].password === body.password) {
-            res.status(200).json({ user: user[0] });
+        if (await bcrypt.compare(body.password, oneUser.password)) {
+
+            const token = jwt.sign(
+                {user_id: oneUser._id, email:oneUser.email},
+                "MySuperDuperPrivateKey",
+                {
+                    expiresIn: "2h"
+                }
+            )
+
+            res.status(200).json({ token });
             return;
         } else {
-            res.status(406).json({ message: "Password not match" });
+            res.status(405).json({ message: "Password not match" });
             return;
         }
     }

@@ -7,13 +7,8 @@ import axios from "axios";
 export default function LogIn() {
   const [loginData, setLoginData] = useState({});
   const router = useRouter();
-  useEffect(() => {
-    const uid = localStorage.getItem("uid");
-
-    if (uid) {
-      router.push("/HomePageHome");
-    }
-  }, []);
+  // useEffect(() => {
+  // }, []);
 
   const handleLogin = async () => {
     const { data } = await axios.post("http://localhost:8000/login", {
@@ -22,7 +17,7 @@ export default function LogIn() {
     });
     console.log(data);
     if (data?.user) {
-      localStorage.setItem("uid", data.user._id);
+      // localStorage.setItem("uid", data.user._id);
       router.push("/");
     }
   };
