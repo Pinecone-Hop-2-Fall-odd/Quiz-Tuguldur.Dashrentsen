@@ -3,7 +3,7 @@ import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
 export const login = async (req, res) => {
-    // password, email
+    
     const body = req.body;
 
     if (body.email === undefined) {
@@ -17,8 +17,9 @@ export const login = async (req, res) => {
 
     const oneUser = await UserModel.findOne({ email: body.email });
     console.log(body);
+    console.log(oneUser);
 
-    if (!user) {
+    if (!oneUser) {
         res.status(405).json({ message: "User not found" });
     } else {
 

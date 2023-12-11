@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from 'next/navigation'
+import loginChecker from "../Components/loginChecker";
 
 export default function HomePage() {
   const searchParams = useSearchParams()

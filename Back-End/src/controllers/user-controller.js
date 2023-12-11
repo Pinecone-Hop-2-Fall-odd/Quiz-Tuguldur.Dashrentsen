@@ -7,12 +7,11 @@ export const getAllUsers = async (req, res) => {
 };
 
 export const getUser = async (req, res) => {
-  const params = req.params;
-  const user = await UserModel.find({ _id: params.id });
+  const userId = req.user.user_id
+  const user = await UserModel.findOne({ _id: userId });
   console.log(user);
-  // const users_data = await UserModel.findById("adiosajdoisa");
 
-  if (user.length === 0) {
+  if (user.length == 0) {
     res.status(405).json({ message: "User not found" });
   } else {
     res.status(200).json({ user: user });
@@ -25,7 +24,7 @@ export const createUser = async (req, res) => {
     const body = req.body;
     const hashedPassword = await bcrypt.hash(body.password || "" , 10);
     await UserModel.create({
-      name: body.name,
+      userName: body.userName,
       email: body.email,
       password: hashedPassword,
       createdOn: new Date(),

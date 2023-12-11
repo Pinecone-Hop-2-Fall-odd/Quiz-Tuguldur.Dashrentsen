@@ -4,15 +4,16 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ProfileIcon } from "@/assets/icons/profile-icon";
 import { useRouter } from 'next/navigation'
+import axios from "axios";
 
 export default function HomePage() {
   const router = useRouter()
-  useEffect(() => {
-    const uid = localStorage.getItem("uid");
 
-    if (uid === null) {
-      router.push("/LogInHome");
-    }
+    useEffect(() => {
+      const token = localStorage.getItem("token")
+      if(token == null){
+        router.push("/LogInHome");
+      }
   }, []);
 
   function pageJump(){

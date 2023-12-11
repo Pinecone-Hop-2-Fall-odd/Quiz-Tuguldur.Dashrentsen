@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken"
 const config = process.env
 export const verifyToken = (req, res, next ) => {
     const token = 
-    req.body.token || req.query.token || req.headers["x-access-token"]
+    req.body.token || req.query.token || req.headers["token"]
 
     if(!token) {
         return res.status(403).json({success: false, message: "User Token Required"})

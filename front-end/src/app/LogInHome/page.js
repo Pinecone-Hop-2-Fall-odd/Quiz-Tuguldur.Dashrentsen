@@ -16,14 +16,11 @@ export default function LogIn() {
       password: loginData.password,
     });
     console.log(data);
-    if (data?.user) {
-      // localStorage.setItem("uid", data.user._id);
+    if (data?.token) {
+      localStorage.setItem("token", data?.token);
       router.push("/");
     }
   };
-  function jumpSingIn(){
-    router.push("/SignUpHome")
-  }
 
   return (
     <div className="w-screen h-screen flex justify-center items-center">
@@ -59,7 +56,7 @@ export default function LogIn() {
         >
           Log In
         </button>
-        <button onClick={jumpSingIn} className="text-[#1A8BBB] absolute top-[783px] right-[990px] text-[15px] bg-white">Sign Up</button>
+        <button onClick={() => router.push("/SignUpHome")} className="text-[#1A8BBB] absolute top-[783px] right-[990px] text-[15px] bg-white">Sign Up</button>
       </div>
     </div>
   );

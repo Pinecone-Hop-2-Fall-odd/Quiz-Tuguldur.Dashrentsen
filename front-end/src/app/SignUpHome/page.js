@@ -16,12 +16,9 @@ export default function SignUp() {
         userName: signUpData.userName,
       })
       .catch((error) => console.log(error));
-      // router.push("../LogInHome");
+      router.push("../LogInHome");
     console.log(data);
   };
-  function jumpLogIn() {
-    router.push("/LogInHome");
-  }
 
   return (
     <div className="bg-gray w-screen h-screen flex justify-center items-center">
@@ -70,7 +67,7 @@ export default function SignUp() {
           Sign up
         </button>
         <button
-          onClick={jumpLogIn}
+          onClick={() => router.push("/LogInHome")}
           className="text-[#1A8BBB] absolute top-[783px] right-[990px] text-[15px] bg-white"
         >
           Log In

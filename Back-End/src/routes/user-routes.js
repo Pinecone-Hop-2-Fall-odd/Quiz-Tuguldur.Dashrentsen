@@ -11,7 +11,7 @@ export const userRouter = express.Router();
 // delete => deleteUser
 
 userRouter.get('/users', verifyToken, getAllUsers);
-userRouter.get('/user/:id', verifyToken, getUser);
+userRouter.get('/getUser', verifyToken, getUser);
 userRouter.post('/user', createUser);
 userRouter.post('/login', login)
 // userRouter.put('/user/:id', getAllUsers);
