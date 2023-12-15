@@ -2,15 +2,12 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation"; 
 
 export default function HomePage() {
   const [addQuizData, setAddQuizData] = useState({});
-  // const [answers, setAnswers] = useState([
-  //   { answer: addQuizData.answerA, isCorrect: false },
-  //   { answer: addQuizData.answerB, isCorrect: false },
-  //   { answer: addQuizData.answerC, isCorrect: false },
-  //   { answer: addQuizData.answerD, isCorrect: false },
-  // ]);
+  const [workChecker,setWorkChecker] = useState(Boolean)
+  const router = useRouter()
 
   const addQuiz = async () => {
     let answers = [
@@ -37,6 +34,7 @@ export default function HomePage() {
       question: addQuizData.question,
       answers: answers,
     });
+    router.push("/CustomQuizMenu")
   };
 
   console.log(addQuizData);
