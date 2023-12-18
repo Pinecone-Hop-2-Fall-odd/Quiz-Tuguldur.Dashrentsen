@@ -15,22 +15,13 @@ app.use(userRouter);
 app.use(quizRouter)
 app.use(customQuizRouter)
 
-const connectUserDb = async () => {
+const connectDb = async () => {
     await mongoose.connect('mongodb+srv://new_user:test_password@tuguno.mzidixd.mongodb.net/')
     console.log('User Database Connected');
 }
-const connectQuizDb = async () => {
-    await mongoose.connect('mongodb+srv://new_user:test_password@tuguno.mzidixd.mongodb.net/')
-    console.log('Quiz Database Connected');
-}
-const connectCustomQuizDb = async () => {
-    await mongoose.connect('mongodb+srv://new_user:test_password@tuguno.mzidixd.mongodb.net/')
-    console.log('Custom Quiz Database Connected');
-}
 
-connectUserDb()
-connectQuizDb()
-connectCustomQuizDb()
+connectDb()
+
 
 app.listen(8000, () => {
     console.log(`Your server running on: http://localhost:8000`)

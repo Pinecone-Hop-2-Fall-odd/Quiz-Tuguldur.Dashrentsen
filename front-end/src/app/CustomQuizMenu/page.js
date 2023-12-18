@@ -2,23 +2,24 @@
 
 import { ProfileIcon } from "@/assets/icons/profile-icon";
 import { useRouter } from "next/navigation";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import Link from "next/link";
 
 export default function CustomQuizMenu() {
   const router = useRouter();
-  const [quizsData,setQuizsData] = useState()
+  const [quizsData, setQuizsData] = useState();
 
-  async function  fetchData(){
+  async function fetchData() {
     const { data } = await axios.get("http://localhost:8000/getAllQuiz");
     console.log(data);
-    setQuizsData(data)
+    setQuizsData(data);
     console.log(quizsData);
   }
 
   useEffect(() => {
-    fetchData()
-  },[])
+    fetchData();
+  }, []);
 
   return (
     <div className="flex flex-col items-center">
@@ -31,7 +32,27 @@ export default function CustomQuizMenu() {
           <ProfileIcon />
         </div>
       </div>
-      <div className="w-screen h-auto flex flex-row py-[30px] px-[50px]"></div>
+      <div className="gap-[50px] w-screen h-auto flex flex-row py-[30px] px-[50px]">
+        {quizsData?.allQuizs.map((quiz, index) => (
+          <div className="gap-[10px] pt-[45px] flex flex-col justify-start items-center bg-[#1A8BBB] shadow-[#1A8BBB] shadow-lg w-[270px] h-[270px]">
+            <h1 className="text-[30px] text-white font-bold ">
+              {quiz?.quizName}
+            </h1>
+            <h1 className="text-[17px] text-white">
+              {quiz?.questions?.length} Quizs
+            </h1>
+          </div>
+        ))}
+        <Link href="/CustomQuizAdd">
+          <div className="gap-[10px] pt-[45px] flex flex-col justify-start items-center bg-white shadow-[#1A8BBB] shadow-lg w-[270px] h-[270px]">
+            <div className="relative flex flex-col justify-center items-center rounded-[5px] bg-[#1A8BBB] w-[150px] h-[150px]">
+              <div className="absolute rounded-[7px] bg-white w-[110px] h-[15px]"></div>
+              <div className="absolute rounded-[7px] bg-white w-[15px] h-[110px]"></div>
+            </div>
+            <h1 className="text-[25px] font-bold text-[#1A8BBB]">Add Quiz</h1>
+          </div>
+        </Link>
+      </div>
     </div>
   );
 }

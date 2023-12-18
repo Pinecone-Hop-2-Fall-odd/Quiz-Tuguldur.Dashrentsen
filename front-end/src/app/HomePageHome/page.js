@@ -39,7 +39,7 @@ export default function HomePage() {
             Play
           </button>
         </Link>
-        <Link href="./CustomPlayHome">
+        <Link href="./CustomQuizMenu">
           <button className=" w-[600px] h-[90px] text-white h-[100px] bg-[#1A8BBB] text-[60px] font-medium" style={{borderRadius: "25px"}}>
             Custom Quiz Play
           </button>
