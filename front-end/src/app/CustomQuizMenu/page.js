@@ -10,6 +10,10 @@ export default function CustomQuizMenu() {
   const router = useRouter();
   const [quizsData, setQuizsData] = useState();
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   async function fetchData() {
     const { data } = await axios.get("http://localhost:8000/getAllQuiz");
     console.log(data);
@@ -17,10 +21,11 @@ export default function CustomQuizMenu() {
     console.log(quizsData);
   }
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  function pageJump(index){
+    const quizId = quizsData?.allQuizs?.[index]._id
 
+    router.push(`/CustomQuizPlay?quizId=${quizId}`)
+  }
   return (
     <div className="flex flex-col items-center">
       <div className="w-screen h-[100px] bg-[#1A8BBB] flex flex-row items-center pl-[50px] gap-[1950px]">
@@ -34,7 +39,10 @@ export default function CustomQuizMenu() {
       </div>
       <div className="gap-[50px] w-screen h-auto flex flex-row py-[30px] px-[50px]">
         {quizsData?.allQuizs.map((quiz, index) => (
-          <div className="gap-[10px] pt-[45px] flex flex-col justify-start items-center bg-[#1A8BBB] shadow-[#1A8BBB] shadow-lg w-[270px] h-[270px]">
+          <div
+            onClick={() => pageJump(index)}
+            className="gap-[10px] pt-[45px] flex flex-col justify-start items-center bg-[#1A8BBB] shadow-[#1A8BBB] shadow-lg w-[270px] h-[270px]"
+          >
             <h1 className="text-[30px] text-white font-bold ">
               {quiz?.quizName}
             </h1>

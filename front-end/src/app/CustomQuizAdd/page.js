@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function HomePage() {
   const [addQuizData, setAddQuizData] = useState({});
@@ -36,7 +37,9 @@ export default function HomePage() {
   };
 
   useEffect(() => {
-    questions.push(oneQuiz);
+    if (Object.values(oneQuiz).length > 0) {
+      setQuestions([...questions , oneQuiz])
+    }
   }, [oneQuiz]);
 
   const addQuiz = async () => {
@@ -49,9 +52,9 @@ export default function HomePage() {
     router.push("/CustomQuizMenu");
   };
 
-  console.log(oneQuiz);
-  console.log(questions);
-  console.log(quizName);
+  console.log("one quiz", oneQuiz);
+  console.log("questions", questions);
+  console.log("quizname", quizName);
 
   return (
     <div class="gap-[20px] flex-row bg-[#DDDFE5]  w-screen h-screen flex justify-center items-center ">
@@ -76,9 +79,11 @@ export default function HomePage() {
           </div>
           <h1 className=" text[30px] text-[#50566B]">You're Questions:</h1>
           <div className="flex flex-col w-auto h-auto">
-            {questions.map((question,index) => (
+            {questions?.map((question, index) => (
               <div className="w-auto h-auto">
-                <h1 className="text-[25px] text-[#50566B]">{index}.{question?.question}?</h1>
+                <h1 className="text-[25px] text-[#50566B]">
+                  {index}.{question?.question}?
+                </h1>
               </div>
             ))}
           </div>
@@ -119,7 +124,7 @@ export default function HomePage() {
             className="border-[1px] border-solid border-[#50566B] rounded-[5px] w-[220px] h-[30px]"
             type="text"
             onChange={(e) =>
-              setAddQuizData((prev) => ({ ...prev, asnwerB: e.target.value }))
+              setAddQuizData((prev) => ({ ...prev, answerB: e.target.value }))
             }
             value={addQuizData.answerB}
           />

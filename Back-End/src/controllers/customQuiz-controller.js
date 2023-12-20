@@ -18,6 +18,19 @@ export const addQuiz = async (req, res) => {
   }
 };
 
+export const getQuiz = async (req,res) => {
+
+const quizId = req.params.id
+
+  try{
+    const oneQuiz = await customQuizModel.findOne({_id:quizId})
+    console.log(oneQuiz);
+    res.status(200).json({oneQuiz:oneQuiz})
+  }catch (err) {
+    res.status(401).json({message:err.message})
+  }
+}
+
 export const getAllQuizs = async (req, res) => {
   try {
     const allQuizs = await customQuizModel.find();
