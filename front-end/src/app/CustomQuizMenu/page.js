@@ -5,10 +5,12 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import { TrashIcon } from "@/assets/icons/trash-icon";
 
 export default function CustomQuizMenu() {
   const router = useRouter();
   const [quizsData, setQuizsData] = useState();
+  const [isHover,setIsHover] = useState(Boolean)
 
   useEffect(() => {
     fetchData();
@@ -26,6 +28,7 @@ export default function CustomQuizMenu() {
 
     router.push(`/CustomQuizPlay?quizId=${quizId}`)
   }
+
   return (
     <div className="flex flex-col items-center">
       <div className="w-screen h-[100px] bg-[#1A8BBB] flex flex-row items-center pl-[50px] gap-[1950px]">
@@ -42,6 +45,8 @@ export default function CustomQuizMenu() {
           <div
             onClick={() => pageJump(index)}
             className="gap-[10px] pt-[45px] flex flex-col justify-start items-center bg-[#1A8BBB] shadow-[#1A8BBB] shadow-lg w-[270px] h-[270px]"
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
           >
             <h1 className="text-[30px] text-white font-bold ">
               {quiz?.quizName}
@@ -49,6 +54,11 @@ export default function CustomQuizMenu() {
             <h1 className="text-[17px] text-white">
               {quiz?.questions?.length} Quizs
             </h1>
+            {isHover ===true
+            ? <TrashIcon className="mt-[80px]"/>
+            : console.log("not hovering")
+
+            }
           </div>
         ))}
         <Link href="/CustomQuizAdd">
