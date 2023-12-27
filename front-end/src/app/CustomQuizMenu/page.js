@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 import { TrashIcon } from "@/assets/icons/trash-icon";
+import { PlayIcon } from "@/assets/icons/play-icon";
 
 export default function CustomQuizMenu() {
   const router = useRouter();
   const [quizsData, setQuizsData] = useState();
-  const [isHover,setIsHover] = useState(Boolean)
 
   useEffect(() => {
     fetchData();
@@ -23,10 +23,19 @@ export default function CustomQuizMenu() {
     console.log(quizsData);
   }
 
-  function pageJump(index){
-    const quizId = quizsData?.allQuizs?.[index]._id
+  function pageJump(index) {
+    const quizId = quizsData?.allQuizs?.[index]._id;
 
-    router.push(`/CustomQuizPlay?quizId=${quizId}`)
+    router.push(`/CustomQuizPlay?quizId=${quizId}`);
+  }
+  async function quizDelete(index) {
+    const quizId = quizsData?.allQuizs?.[index]._id;
+    const { deletedQuiz } = await axios.get(
+      `http://localhost:8000/quizDelete/${quizId}`
+    );
+
+    fetchData();
+    console.log(deletedQuiz);
   }
 
   return (
@@ -42,24 +51,12 @@ export default function CustomQuizMenu() {
       </div>
       <div className="gap-[50px] w-screen h-auto flex flex-row py-[30px] px-[50px]">
         {quizsData?.allQuizs.map((quiz, index) => (
-          <div
-            onClick={() => pageJump(index)}
-            className="gap-[10px] pt-[45px] flex flex-col justify-start items-center bg-[#1A8BBB] shadow-[#1A8BBB] shadow-lg w-[270px] h-[270px]"
-            onMouseEnter={() => setIsHover(true)}
-            onMouseLeave={() => setIsHover(false)}
-          >
-            <h1 className="text-[30px] text-white font-bold ">
-              {quiz?.quizName}
-            </h1>
-            <h1 className="text-[17px] text-white">
-              {quiz?.questions?.length} Quizs
-            </h1>
-            {isHover ===true
-            ? <TrashIcon className="mt-[80px]"/>
-            : console.log("not hovering")
-
-            }
-          </div>
+          <QuizCard
+            pageJump={pageJump}
+            quiz={quiz}
+            index={index}
+            quizDelete={quizDelete}
+          />
         ))}
         <Link href="/CustomQuizAdd">
           <div className="gap-[10px] pt-[45px] flex flex-col justify-start items-center bg-white shadow-[#1A8BBB] shadow-lg w-[270px] h-[270px]">
@@ -74,3 +71,32 @@ export default function CustomQuizMenu() {
     </div>
   );
 }
+
+const QuizCard = ({ pageJump, quiz, index, quizDelete }) => {
+  const [isHover, setIsHover] = useState(false);
+
+  return (
+    <div
+      className="gap-[10px] pt-[45px] flex flex-col justify-start items-center bg-[#1A8BBB] shadow-[#1A8BBB] shadow-lg w-[270px] h-[270px]"
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+    >
+      <h1 className="text-[30px] text-white font-bold ">{quiz?.quizName}</h1>
+      <h1 className="text-[17px] text-white">
+        {quiz?.questions?.length} Quizs
+      </h1>
+      {isHover === true ? (
+        <div className="flex gap-[2px] mt-[80px]">
+          <div onClick={() => quizDelete(index)} className="w-[71px] h-[71px]">
+            <TrashIcon />
+          </div>
+          <div className="w-[71px] h-[71px]" onClick={() => pageJump(index)}>
+            <PlayIcon />
+          </div>
+        </div>
+      ) : (
+        console.log("not hovering")
+      )}
+    </div>
+  );
+};

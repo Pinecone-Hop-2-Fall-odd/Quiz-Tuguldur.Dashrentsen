@@ -39,15 +39,12 @@ export const getAllQuizs = async (req, res) => {
     res.status(407).json({ message: err.message });
   }
 };
-
-//   export const getQuiz = async (req, res) => {
-//     const params = req.params
-//     console.log(params);
-//     try {
-//       const quiz = await QuizModel.find({ category: params.category });
-
-//       res.status(200).json({ quizs: quiz });
-//     } catch (err) {
-//       res.status(406).json({ message: err.message });
-//     }
-//   };
+export const quizDelete = async (req,res) => {
+  const quizId = req.params.id
+  try{
+    const deletedQuiz = await customQuizModel.findOneAndDelete({_id:quizId})
+    res.status(200).json({deletedQuiz:deletedQuiz})
+  }catch (err) {
+    res.status(407).json({message:err.message})
+  }
+}

@@ -38,7 +38,7 @@ export default function HomePage() {
 
   useEffect(() => {
     if (Object.values(oneQuiz).length > 0) {
-      setQuestions([...questions , oneQuiz])
+      setQuestions([   , oneQuiz])
     }
   }, [oneQuiz]);
 
