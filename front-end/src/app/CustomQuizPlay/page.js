@@ -62,15 +62,14 @@ export default function CustomQuizPlay() {
             "Congratulations"
           </h1>
         </div>
-        <div className="relative flex flex-col items-center pt-[40px] bg-white w-[700px] h-auto rounded-[30px]">
+        <div className="relative flex flex-col items-center pt-[40px] bg-white w-[700px] h-[400px] rounded-[30px]">
           <h1 className="font-bold text-[50px] text-[#50566B] flex flex-col items-center">
             {userData?.data?.user[0]?.userName}
           </h1>
           <h1 className="font-bold text-[50px] text-[#50566B]">
-            You got {isCorrectCounter} out of {quizdata?.data?.oneQuiz?.questions.length}
-            right
+            You got {isCorrectCounter} out of {quizdata?.data?.oneQuiz?.questions.length} right
           </h1>
-          <div className="right-[100px] flex flex-row gap-[30px] absolute bottom-[100px] ">
+          <div className="right-[100px] w-auto h-auto flex flex-row gap-[30px] absolute bottom-[100px] ">
             <button
               onClick={() => router.push("/CustomQuizMenu")}
               className="text-white text-[20px] bg-[#1A8BBB] w-[100px] h-[60px] rounded-[10px] "

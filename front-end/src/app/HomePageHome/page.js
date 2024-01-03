@@ -35,12 +35,12 @@ export default function HomePage() {
       <div className="items-center absolute bottom-[27vh] flex gap-[10px] flex-col">
         <h1 className="text-[#50566B] text-[100px] font-semibold">Quiz.Play</h1>
         <Link href="./CategoriesHome">
-          <button className=" w-[400px] h-[85px] text-white h-[100px] bg-[#1A8BBB] text-[60px] font-medium" style={{borderRadius: "25px"}}>
+          <button className="active:bg-sky-900 w-[400px] h-[85px] text-white h-[100px] bg-[#1A8BBB] text-[60px] font-medium" style={{borderRadius: "25px"}}>
             Play
           </button>
         </Link>
         <Link href="./CustomQuizMenu">
-          <button className=" w-[600px] h-[90px] text-white h-[100px] bg-[#1A8BBB] text-[60px] font-medium" style={{borderRadius: "25px"}}>
+          <button className="active:bg-sky-900 w-[600px] h-[90px] text-white h-[100px] bg-[#1A8BBB] text-[60px] font-medium" style={{borderRadius: "25px"}}>
             Custom Quiz Play
           </button>
         </Link>

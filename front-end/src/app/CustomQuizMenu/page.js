@@ -30,16 +30,21 @@ export default function CustomQuizMenu() {
   }
   async function quizDelete(index) {
     const quizId = quizsData?.allQuizs?.[index]._id;
-    const { deletedQuiz } = await axios.get(
-      `http://localhost:8000/quizDelete/${quizId}`
-    );
-
-    fetchData();
-    console.log(deletedQuiz);
+    const deleteQuestion = confirm("Are You Sure?");
+    console.log(deleteQuestion);
+    if (deleteQuestion==true) {
+      const { deletedQuiz } = await axios.get(
+        `http://localhost:8000/quizDelete/${quizId}`
+      );
+      fetchData();
+    } else {
+      fetchData();
+      console.log("delete canceled");
+    }
   }
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="h-screen w-screen relative flex flex-col items-center">
       <div className="w-screen h-[100px] bg-[#1A8BBB] flex flex-row items-center pl-[50px] gap-[1950px]">
         <h1 className="text-[25px] font-extrabold text-white">You're Quizs</h1>
         <div
@@ -68,6 +73,9 @@ export default function CustomQuizMenu() {
           </div>
         </Link>
       </div>
+      <div className="absolute bottom-[30px] right-[50px] gap-[50px] flex flex-row w-auto h-auto">
+        <button onClick={() => router.push("/HomePageHome")} className="active:bg-sky-900 bg-[#1A8BBB] h-[80px] w-[150px] rounded-[25px] text-[25px] text-white ">Back</button>
+      </div>
     </div>
   );
 }
@@ -77,16 +85,16 @@ const QuizCard = ({ pageJump, quiz, index, quizDelete }) => {
 
   return (
     <div
-      className="gap-[10px] pt-[45px] flex flex-col justify-start items-center bg-[#1A8BBB] shadow-[#1A8BBB] shadow-lg w-[270px] h-[270px]"
+      className="gap-[10px] py-[45px] flex flex-col justify-start items-center bg-[#1A8BBB] shadow-[#1A8BBB] shadow-lg w-[270px] h-[270px]"
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
       <h1 className="text-[30px] text-white font-bold ">{quiz?.quizName}</h1>
       <h1 className="text-[17px] text-white">
-        {quiz?.questions?.length} Quizs
+        {quiz?.questions?.length} Questions
       </h1>
       {isHover === true ? (
-        <div className="flex gap-[2px] mt-[80px]">
+        <div className="flex gap-[2px] mg-[80px]">
           <div onClick={() => quizDelete(index)} className="w-[71px] h-[71px]">
             <TrashIcon />
           </div>

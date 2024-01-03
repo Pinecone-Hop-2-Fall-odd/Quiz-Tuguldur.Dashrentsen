@@ -38,7 +38,7 @@ export default function HomePage() {
 
   useEffect(() => {
     if (Object.values(oneQuiz).length > 0) {
-      setQuestions([   , oneQuiz])
+      setQuestions((prev) => [...prev, oneQuiz]);
     }
   }, [oneQuiz]);
 
@@ -57,7 +57,7 @@ export default function HomePage() {
   console.log("quizname", quizName);
 
   return (
-    <div class="gap-[20px] flex-row bg-[#DDDFE5]  w-screen h-screen flex justify-center items-center ">
+    <div class="relative gap-[20px] flex-row bg-[#DDDFE5]  w-screen h-screen flex justify-center items-center ">
       <div className="flex flex-col  gap-[20px] bg-[#DDDFE5] border-[1px] border-solid border-black w-[600px] h-[800px] ">
         <div className="flex flex justify-center items-center text-[40px] font-bold text-white w-[100%] h-[90px] bg-[#1A8BBB]">
           Quiz Information
@@ -89,7 +89,7 @@ export default function HomePage() {
           </div>
           <button
             onClick={() => addQuiz()}
-            className="shadow-lg shadow-[#1A8BBB] text-white text-[16px] font-[700] rounded-[30px] w-[151px] h-[50px] bg-[#1A8BBB]"
+            className="active:bg-sky-900 shadow-lg shadow-[#1A8BBB] text-white text-[16px] font-[700] rounded-[30px] w-[151px] h-[50px] bg-[#1A8BBB]"
           >
             Finish Quiz
           </button>
@@ -172,11 +172,12 @@ export default function HomePage() {
         </div>
         <button
           onClick={() => addQuestion()}
-          className="shadow-lg shadow-[#1A8BBB] text-white text-[16px] font-[700] rounded-[30px] w-[151px] h-[50px] bg-[#1A8BBB]"
+          className="active:bg-sky-900 shadow-lg shadow-[#1A8BBB] text-white text-[16px] font-[700] rounded-[30px] w-[151px] h-[50px] bg-[#1A8BBB]"
         >
           Add Question
         </button>
       </div>
+      <button onClick={() => router.push("/CustomQuizMenu")} className="active:bg-sky-900 absolute bottom-[40px] right-[30px] bg-[#1A8BBB] h-[80px] w-[150px] rounded-[25px] text-[25px] text-white ">Cancel</button>
     </div>
   );
 }
