@@ -55,12 +55,13 @@ export default function CustomQuizMenu() {
         </div>
       </div>
       <div className="gap-[50px] w-screen h-auto flex flex-row py-[30px] px-[50px]">
-        {quizsData?.allQuizs.map((quiz, index) => (
+        {quizsData?.allQuizs.map((quiz, index,creator) => (
           <QuizCard
             pageJump={pageJump}
             quiz={quiz}
             index={index}
             quizDelete={quizDelete}
+            creator={creator}
           />
         ))}
         <Link href="/CustomQuizAdd">
@@ -80,7 +81,7 @@ export default function CustomQuizMenu() {
   );
 }
 
-const QuizCard = ({ pageJump, quiz, index, quizDelete }) => {
+const QuizCard = ({ pageJump, quiz, index, quizDelete}) => {
   const [isHover, setIsHover] = useState(false);
 
   return (
@@ -93,6 +94,7 @@ const QuizCard = ({ pageJump, quiz, index, quizDelete }) => {
       <h1 className="text-[17px] text-white">
         {quiz?.questions?.length} Questions
       </h1>
+      <h1 className="text-[17px] text-white">Created by : "{quiz?.creator}"</h1>
       {isHover === true ? (
         <div className="flex gap-[2px] mg-[80px]">
           <div onClick={() => quizDelete(index)} className="w-[71px] h-[71px]">

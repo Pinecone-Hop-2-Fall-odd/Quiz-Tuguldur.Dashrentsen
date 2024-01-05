@@ -5,6 +5,7 @@ const customQuizSchema = new mongoose.Schema({
   questions: [
     {question:String,answers: [{ answer: String, isCorrect: Boolean }]}
   ],
+  creator:String
 
 });
 

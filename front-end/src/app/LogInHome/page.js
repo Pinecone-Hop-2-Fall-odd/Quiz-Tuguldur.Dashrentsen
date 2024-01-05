@@ -23,7 +23,7 @@ export default function LogIn() {
   return (
     <div className="w-screen h-screen flex justify-center items-center">
       <div
-        relative className="w-[600px] h-[500px] bg-white border-[1px] border-black border-solid  flex flex-col items-center pt-[20px] gap-[40px] "
+        className="w-[600px] h-[500px] bg-white border-[1px] border-black border-solid  flex flex-col items-center pt-[20px] gap-[40px] "
       >
         <h1 className="text-[40px]">Log In to the game</h1>
         <input
@@ -39,7 +39,7 @@ export default function LogIn() {
         ></input>
         <input
           value={loginData.password}
-          type="text"
+          type="password"
           id="passwordInput"
           name="passwordInput"
           placeholder="Password"
@@ -54,7 +54,7 @@ export default function LogIn() {
         >
           Log In
         </button>
-        <button onClick={() => router.push("/SignUpHome")} className="text-[#1A8BBB] absolute top-[783px] right-[990px] text-[15px] bg-white">Sign Up</button>
+        <button onClick={() => router.push("/SignUpHome")} className="w-[100%] h-auto pl-[190px] text-[#1A8BBB] text-[15px] bg-white">Don't have an account?</button>
       </div>
     </div>
   );

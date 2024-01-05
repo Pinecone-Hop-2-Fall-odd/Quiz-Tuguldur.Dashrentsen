@@ -31,7 +31,7 @@ export const login = async (req, res) => {
                 {user_id: oneUser._id, email:oneUser.email},
                 "MySuperDuperPrivateKey",
                 {
-                    expiresIn: "2h"
+                    expiresIn: "72h"
                 }
             )
 

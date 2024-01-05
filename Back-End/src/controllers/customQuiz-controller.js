@@ -8,6 +8,7 @@ export const addQuiz = async (req, res) => {
     await customQuizModel.create({
       quizName: body.quizName,
       questions: body.questions,
+      creator:body.creator,
       createdOn: new Date(),
     });
     const allQuizs = await customQuizModel.find();

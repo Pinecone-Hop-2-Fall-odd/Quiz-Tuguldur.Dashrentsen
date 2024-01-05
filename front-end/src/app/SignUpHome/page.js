@@ -6,17 +6,23 @@ import axios from "axios";
 
 export default function SignUp() {
   const [signUpData, setSignUpData] = useState({});
+  const [isGood,setIsGood] = useState(true)
   const router = useRouter();
 
   const handleSignUp = async () => {
-    const data  = await axios
+    const data = await axios
       .post("http://localhost:8000/user", {
         email: signUpData.email,
         password: signUpData.password,
         userName: signUpData.userName,
       })
-      .catch((error) => console.log(error));
-      router.push("../LogInHome");
+      .catch((error) => setIsGood(false));
+      if (isGood==true) {
+        router.push("../LogInHome");
+      }else{
+        alert("Email is already taken")
+      }
+    
     console.log(data);
   };
 
@@ -39,17 +45,6 @@ export default function SignUp() {
           }
         ></input>
         <input
-          value={signUpData.password}
-          type="text"
-          id="passwordInput"
-          name="passwordInput"
-          placeholder="Password"
-          className="text-[20px] bg-gray border-solid border-gray border-[1px] w-[350px] h-[60px] "
-          onChange={(e) =>
-            setSignUpData((prev) => ({ ...prev, password: e.target.value }))
-          }
-        ></input>
-        <input
           value={signUpData.email}
           type="text"
           id="emailInput"
@@ -60,6 +55,17 @@ export default function SignUp() {
             setSignUpData((prev) => ({ ...prev, email: e.target.value }))
           }
         ></input>
+        <input
+          value={signUpData.password}
+          type="password"
+          id="passwordInput"
+          name="passwordInput"
+          placeholder="Password"
+          className="text-[20px] bg-gray border-solid border-gray border-[1px] w-[350px] h-[60px] "
+          onChange={(e) =>
+            setSignUpData((prev) => ({ ...prev, password: e.target.value }))
+          }
+        ></input>
         <button
           className="text-white bg-[#1A8BBB] w-[350px] h-[60px]"
           onClick={handleSignUp}
@@ -68,9 +74,9 @@ export default function SignUp() {
         </button>
         <button
           onClick={() => router.push("/LogInHome")}
-          className="text-[#1A8BBB] absolute top-[783px] right-[990px] text-[15px] bg-white"
+          className="text-[#1A8BBB] absolute top-[783px] right-[950px] text-[15px] bg-white"
         >
-          Log In
+          Already have an account ?
         </button>
       </div>
     </div>

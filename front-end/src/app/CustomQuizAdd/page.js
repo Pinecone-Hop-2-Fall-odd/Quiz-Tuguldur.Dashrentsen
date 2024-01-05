@@ -10,7 +10,25 @@ export default function HomePage() {
   const [oneQuiz, setOneQuiz] = useState({});
   const [questions, setQuestions] = useState([]);
   const [quizName, setQuizName] = useState();
+  const [userData, setUserData] = useState();
   const router = useRouter();
+
+  const fetchData = async () => {
+    const token = localStorage.getItem("token");
+    if (token == null) {
+      router.push("/LogInHome");
+    } else {
+      const data = await axios.get(`http://localhost:8000/getUser`, {
+        headers: { token },
+      });
+      setUserData(data);
+      console.log("data",data);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const addQuestion = () => {
     setOneQuiz({
@@ -48,13 +66,14 @@ export default function HomePage() {
     const { data } = await axios.post("http://localhost:8000/addQuiz", {
       quizName: quizName.quizName,
       questions: questions,
+      creator:userData?.data?.user?.userName
     });
     router.push("/CustomQuizMenu");
   };
 
-  console.log("one quiz", oneQuiz);
-  console.log("questions", questions);
-  console.log("quizname", quizName);
+  // console.log("one quiz", oneQuiz);
+  // console.log("questions", questions);
+  // console.log("quizname", quizName);
 
   return (
     <div class="relative gap-[20px] flex-row bg-[#DDDFE5]  w-screen h-screen flex justify-center items-center ">
