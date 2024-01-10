@@ -21,8 +21,8 @@ export default function HomePage() {
   }
 
   return (
-    <div class="relative items-center  bg-[#f8f9fa] w-screen h-screen flex justify-center">
-      <div className="absolute top-[0] gap-[1800px] items-center pr-[10px] justify-end pt-[10px] flex flex-row w-screen h-[100px] bg-[#5e72e4]">
+    <div class="relative items-center  bg-white w-screen h-screen flex justify-center">
+      <div className="absolute top-[0] gap-[1800px] items-center pr-[10px] justify-end pt-[10px] flex flex-row w-screen h-[100px] bg-[#1A8BBB]">
         <div className="flex flex-row w-auto h-auto ">
           <h1 className="text-white font-extrabold text-[30px]">
             2goo_No Quiz.io
