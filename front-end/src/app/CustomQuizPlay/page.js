@@ -8,6 +8,7 @@ import { useSearchParams } from "next/navigation";
 export default function CustomQuizPlay() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  // router.back()
   const [quizdata, setQuizData] = useState();
   const [counter, setCounter] = useState(0);
   const [iscorrect, setIscorrect] = useState(null);
@@ -25,7 +26,7 @@ export default function CustomQuizPlay() {
     });
     setQuizData(quizData);
     setUserData(userData);
-    console.log(quizData);
+    // console.log(quizData);
   };
 
   useEffect(() => {
@@ -38,20 +39,21 @@ export default function CustomQuizPlay() {
   }
 
   function isCorrect(answer, index) {
+    setAnswerIndex(index);
     if (answer.isCorrect == true) {
-      setAnswerIndex(index);
       setIsCorrectCounter(isCorrectCounter + 1);
-      setIscorrect(true)
+      setIscorrect(true);
     } else {
-      setIscorrect(false)
+      setIscorrect(false);
     }
-    console.log("index",index);
+    // console.log("index", index);
 
     setTimeout(interval, 1000);
-    console.log("answer",answer);
+    // console.log("answer", answer);
 
-    console.log("counter" , counter);
-    console.log("iscorrect",iscorrect);
+    // console.log("counter", counter);
+    // console.log("iscorrect", iscorrect);
+    // console.log("answerIndex", answerIndex);
   }
 
   if (quizdata?.data?.oneQuiz?.questions.length === counter) {
@@ -67,7 +69,8 @@ export default function CustomQuizPlay() {
             {userData?.data?.user[0]?.userName}
           </h1>
           <h1 className="font-bold text-[50px] text-[#50566B]">
-            You got {isCorrectCounter} out of {quizdata?.data?.oneQuiz?.questions.length} right
+            You got {isCorrectCounter} out of{" "}
+            {quizdata?.data?.oneQuiz?.questions.length} right
           </h1>
           <div className="right-[100px] w-auto h-auto flex flex-row gap-[30px] absolute bottom-[100px] ">
             <button
@@ -88,7 +91,7 @@ export default function CustomQuizPlay() {
     );
   }
 
-  console.log(iscorrect);
+  // console.log(iscorrect);
 
   return (
     <div class=" relative bg-white  w-screen h-screen flex-col flex gap-[40px]">
@@ -101,24 +104,48 @@ export default function CustomQuizPlay() {
         </h1>
       </div>
       <div className="text-[#50566B] g-[30px] absolute left-[80px] bottom-[50px] w-[2900px] flex flex-row gap-[30px] flex-wrap">
-        {quizdata?.data?.oneQuiz?.questions?.[counter]?.answers.map((answer, index) => (
-          <button
-            style={
-              iscorrect === null
-                ? { background: "white" }
-                : answerIndex === index
-                ? iscorrect === true
-                  ? { background: "green" }
-                  : { background: "red" }
-                : { background: "white" }
-            }
-            onClick={() => isCorrect(answer, index)}
-            className="pl-[10px] flex justify-start items-center font-[550]  text-[80px] w-[1000px] h-[250px]  bg-white border-solid border-[1px] border-black"
-          >
-            {answer?.answer}
-          </button>
-        ))}
+        {quizdata?.data?.oneQuiz?.questions?.[counter]?.answers.map(
+          (answer, index) => (
+            <button
+              onClick={() => isCorrect(answer, index)}
+              style={
+                { background: isCorrectChecker(iscorrect, answerIndex, index) }
+                // iscorrect === null
+                //   ? { background: "white" }
+                //   : answerIndex === index
+                //   ? iscorrect === true
+                //     ? { background: "green" }
+                //     : { background: "red" }
+                //   : { background: "white" }
+              }
+              className="pl-[10px] flex justify-start items-center font-[550]  text-[80px] w-[1000px] h-[250px]  bg-white border-solid border-[1px] border-black"
+            >
+              {answer?.answer}
+            </button>
+          )
+        )}
       </div>
     </div>
-  )
+  );
 }
+
+const isCorrectChecker = (isCorrect, answerIndex, index) => {
+  console.log("isCorrect", isCorrect);
+  console.log("answerindex", answerIndex);
+  console.log("index", index);
+
+  if (isCorrect === null) {
+    return "white";
+  } else {
+    if (answerIndex === index) {
+      if (isCorrect === true) {
+        return "green";
+      } else {
+        return "red";
+      }
+    } else {
+      return "white";
+    }
+  }
+  // return "green";
+};

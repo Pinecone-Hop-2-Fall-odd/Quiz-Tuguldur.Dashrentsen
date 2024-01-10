@@ -71,13 +71,15 @@ export default function HomePage() {
     router.push("/CustomQuizMenu");
   };
 
-  // console.log("one quiz", oneQuiz);
-  // console.log("questions", questions);
+  console.log("one quiz", oneQuiz);
+  console.log("questions", questions);
+  console.log("correct answer",addQuizData.correctAnswer)
+  console.log("addQuizData",addQuizData)
   // console.log("quizname", quizName);
 
   return (
     <div class="relative gap-[20px] flex-row bg-[#DDDFE5]  w-screen h-screen flex justify-center items-center ">
-      <div className="flex flex-col  gap-[20px] bg-[#DDDFE5] border-[1px] border-solid border-black w-[600px] h-[800px] ">
+      <div className="flex flex-col  gap-[20px] bg-[#DDDFE5] w-[600px] h-[800px] ">
         <div className="flex flex justify-center items-center text-[40px] font-bold text-white w-[100%] h-[90px] bg-[#1A8BBB]">
           Quiz Information
         </div>
@@ -181,7 +183,9 @@ export default function HomePage() {
                   correctAnswer: e.target.value,
                 }))
               }
+              className="w-[100%] h-[100%]"
             >
+              <option></option>
               <option value="A">A</option>
               <option value="B">B</option>
               <option value="C">C</option>

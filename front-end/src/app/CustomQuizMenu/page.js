@@ -44,7 +44,7 @@ export default function CustomQuizMenu() {
   }
 
   return (
-    <div className="h-screen w-screen relative flex flex-col items-center">
+    <div className="relative h-screen w-screen relative flex flex-col items-center">
       <div className="w-screen h-[100px] bg-[#1A8BBB] flex flex-row items-center pl-[50px] gap-[1950px]">
         <h1 className="text-[25px] font-extrabold text-white">You're Quizs</h1>
         <div
@@ -76,6 +76,9 @@ export default function CustomQuizMenu() {
       </div>
       <div className="absolute bottom-[30px] right-[50px] gap-[50px] flex flex-row w-auto h-auto">
         <button onClick={() => router.push("/HomePageHome")} className="active:bg-sky-900 bg-[#1A8BBB] h-[80px] w-[150px] rounded-[25px] text-[25px] text-white ">Back</button>
+      </div>
+      <div className="bottom-[20px] left-[30px] absolute">
+        <h1 className=" text-[#50566B] text-[20px] ">Developed by Pinecone</h1>
       </div>
     </div>
   );

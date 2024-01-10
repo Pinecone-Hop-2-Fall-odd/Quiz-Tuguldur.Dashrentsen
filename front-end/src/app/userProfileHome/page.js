@@ -53,7 +53,7 @@ export default function userProfile() {
         </div>
         <div className="flex flex-row gap-[10px] absolute bottom-[50px] right-[70px]">
           <button
-            onClick={() => router.push("/HomePageHome")}
+            onClick={() => router.back()}
             className="active:bg-sky-900 text-[20px] rounded-[30px] text-white bg-[#1A8BBB] w-[100px] h-[55px]"
           >
             Back

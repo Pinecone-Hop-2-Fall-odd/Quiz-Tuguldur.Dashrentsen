@@ -21,10 +21,10 @@ export default function HomePage() {
   }
 
   return (
-    <div class="relative bg-white w-screen h-screen flex justify-center">
-      <div className="gap-[1800px] items-center pr-[10px] justify-end pt-[10px] flex flex-row w-screen h-[100px] bg-[#1A8BBB]">
+    <div class="relative items-center  bg-[#f8f9fa] w-screen h-screen flex justify-center">
+      <div className="absolute top-[0] gap-[1800px] items-center pr-[10px] justify-end pt-[10px] flex flex-row w-screen h-[100px] bg-[#5e72e4]">
         <div className="flex flex-row w-auto h-auto ">
-          <h1 className="text-white font-extrabold text-[25px]">
+          <h1 className="text-white font-extrabold text-[30px]">
             2goo_No Quiz.io
           </h1>
         </div>
@@ -33,14 +33,14 @@ export default function HomePage() {
         </div>
       </div>
       <div className="items-center absolute bottom-[27vh] flex gap-[10px] flex-col">
-        <h1 className="text-[#50566B] text-[100px] font-semibold">Quiz.Play</h1>
+        <h1 className="text-[#50566B] text-[180px] font-semibold">Quiz.Play</h1>
         <Link href="./CategoriesHome">
-          <button className="active:bg-sky-900 w-[400px] h-[85px] text-white h-[100px] bg-[#1A8BBB] text-[60px] font-medium" style={{borderRadius: "25px"}}>
+          <button className="active:bg-sky-900 w-[400px] h-[100px] text-white bg-[#1A8BBB] text-[60px] font-medium" style={{borderRadius: "25px"}}>
             Play
           </button>
         </Link>
         <Link href="./CustomQuizMenu">
-          <button className="active:bg-sky-900 w-[600px] h-[90px] text-white h-[100px] bg-[#1A8BBB] text-[60px] font-medium" style={{borderRadius: "25px"}}>
+          <button className="active:bg-sky-900 w-[600px] h-[100px] text-white bg-[#1A8BBB] text-[60px] font-medium" style={{borderRadius: "25px"}}>
             Custom Quiz Play
           </button>
         </Link>
