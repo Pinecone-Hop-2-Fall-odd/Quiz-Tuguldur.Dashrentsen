@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
+import { BACK_END_URL } from "@/utils/backend-url";
 
 export default function CustomQuizPlay() {
   const searchParams = useSearchParams();
@@ -19,9 +20,9 @@ export default function CustomQuizPlay() {
   const getData = async () => {
     const token = localStorage.getItem("token");
     const quizData = await axios.get(
-      `http://localhost:8000/getCustomQuiz/${searchParams.get("quizId")}`
+      `${BACK_END_URL}/getCustomQuiz/${searchParams.get("quizId")}`
     );
-    const userData = await axios.get(`http://localhost:8000/getUser`, {
+    const userData = await axios.get(`${BACK_END_URL}/getUser`, {
       headers: { token },
     });
     setQuizData(quizData);
@@ -58,13 +59,13 @@ export default function CustomQuizPlay() {
 
   if (quizdata?.data?.oneQuiz?.questions.length === counter) {
     return (
-      <div class="justify-center items-center  relative bg-gray-400 w-screen h-screen flex-col flex gap-[40px]">
-        <div className="absolute top-[0px] w-screen h-[135px] bg-white flex items-center ">
-          <h1 className="absolute left-[890px] font-bold text-[50px] text-[#50566B] font-montserrat">
+      <div class="justify-center items-center  relative bg-gray-400 w-screen h-screen flex-col flex gap-[3.4100596760443307vh]">
+        <div className="absolute top-[0px] w-screen h-[11.508951406649617vh] bg-white flex items-center ">
+          <h1 className="absolute left-[39.732142857142854vw] font-bold text-[50px] text-[#50566B] font-montserrat">
             "Congratulations"
           </h1>
         </div>
-        <div className="relative flex flex-col items-center pt-[40px] bg-white w-[700px] h-[400px] rounded-[30px]">
+        <div className="relative flex flex-col items-center pt-[3.4100596760443307vh] bg-white w-[31.25vw] h-[34.10059676044331vh] rounded-[30px]">
           <h1 className="font-bold text-[50px] text-[#50566B] flex flex-col items-center">
             {userData?.data?.user[0]?.userName}
           </h1>
@@ -72,16 +73,16 @@ export default function CustomQuizPlay() {
             You got {isCorrectCounter} out of{" "}
             {quizdata?.data?.oneQuiz?.questions.length} right
           </h1>
-          <div className="right-[100px] w-auto h-auto flex flex-row gap-[30px] absolute bottom-[100px] ">
+          <div className="right-[4.464285714285714vw] w-auto h-auto flex flex-row gap-[1.3392857142857142vw] absolute bottom-[8.525149190110827vh] ">
             <button
               onClick={() => router.push("/CustomQuizMenu")}
-              className="text-white text-[20px] bg-[#1A8BBB] w-[100px] h-[60px] rounded-[10px] "
+              className="text-white text-[20px] bg-[#1A8BBB] w-[4.464285714285714vw] h-[5.115089514066496vh] rounded-[10px] "
             >
               You're Quizs
             </button>
             <button
               onClick={() => router.push("/HomePageHome")}
-              className="text-white text-[20px] bg-[#1A8BBB] w-[100px] h-[60px] rounded-[10px]"
+              className="text-white text-[20px] bg-[#1A8BBB] w-[4.464285714285714vw] h-[5.115089514066496vh] rounded-[10px]"
             >
               Home
             </button>
@@ -94,31 +95,27 @@ export default function CustomQuizPlay() {
   // console.log(iscorrect);
 
   return (
-    <div class=" relative bg-white  w-screen h-screen flex-col flex gap-[40px]">
-      <div className="absolute top-[0px] w-screen h-[135px] bg-[#1A8BBB] flex items-center ">
-        <h1 className="absolute left-[890px] font-bold text-[50px] text-white font-montserrat">
+    <div class=" relative bg-white  w-screen h-screen flex-col flex gap-[3.4100596760443307vh]">
+      <div className="absolute top-[0px] w-screen h-[11.508951406649617vh] bg-[#1A8BBB] flex items-center ">
+        <h1 className="absolute left-[39.732142857142854vw] font-bold text-[50px] text-white font-montserrat">
           {quizdata?.data?.oneQuiz?.questions?.[counter]?.question}
         </h1>
-        <h1 className="absolute right-[100px] font-bold text-[50px] text-white  font-montserrat">
+        <h1 className="absolute right-[4.464285714285714vw] font-bold text-[50px] text-white  font-montserrat">
           {quizdata?.data?.oneQuiz?.questions.length}/{counter}
         </h1>
       </div>
-      <div className="text-[#50566B] g-[30px] absolute left-[80px] bottom-[50px] w-[2900px] flex flex-row gap-[30px] flex-wrap">
+      <div className="text-[#50566B] g-[1.3392857142857142vw] absolute left-[3.5714285714285716vw] bottom-[4.262574595055414vh] w-[129.46428571428572vw] flex flex-row gap-[1.3392857142857142vw] flex-wrap">
         {quizdata?.data?.oneQuiz?.questions?.[counter]?.answers.map(
           (answer, index) => (
             <button
               onClick={() => isCorrect(answer, index)}
               style={
-                { background: isCorrectChecker(iscorrect, answerIndex, index) }
-                // iscorrect === null
-                //   ? { background: "white" }
-                //   : answerIndex === index
-                //   ? iscorrect === true
-                //     ? { background: "green" }
-                //     : { background: "red" }
-                //   : { background: "white" }
+                { background: ColorChanger(iscorrect, answerIndex, index),
+                  color:TextColorChanger(iscorrect, answerIndex, index),
+                  borderColor:BorderColorChanger(iscorrect, answerIndex, index),
+                }
               }
-              className="pl-[10px] flex justify-start items-center font-[550]  text-[80px] w-[1000px] h-[250px]  bg-white border-solid border-[1px] border-black"
+              className="pl-[0.44642857142857145vw] flex justify-start items-center font-[550]  text-[80px] w-[44.642857142857146vw] h-[21.312872975277067vh]  bg-white border-solid border-[1px] border-black"
             >
               {answer?.answer}
             </button>
@@ -129,7 +126,7 @@ export default function CustomQuizPlay() {
   );
 }
 
-const isCorrectChecker = (isCorrect, answerIndex, index) => {
+const ColorChanger = (isCorrect, answerIndex, index) => {
   console.log("isCorrect", isCorrect);
   console.log("answerindex", answerIndex);
   console.log("index", index);
@@ -139,13 +136,44 @@ const isCorrectChecker = (isCorrect, answerIndex, index) => {
   } else {
     if (answerIndex === index) {
       if (isCorrect === true) {
-        return "green";
+        return "rgb(74 222 128)";
       } else {
-        return "red";
+        return "rgb(248 113 113)";
       }
     } else {
       return "white";
     }
   }
-  // return "green";
+};
+const TextColorChanger = (isCorrect, answerIndex, index) => {
+  console.log("isCorrect", isCorrect);
+  console.log("answerindex", answerIndex);
+  console.log("index", index);
+
+  if (isCorrect === null) {
+    return "#50566B";
+  } else {
+    if (answerIndex === index) {
+      if (isCorrect === true) {
+        return "white";
+      }
+    }
+  }
+};
+const BorderColorChanger = (isCorrect, answerIndex, index) => {
+  console.log("isCorrect", isCorrect);
+  console.log("answerindex", answerIndex);
+  console.log("index", index);
+
+  if (isCorrect === null) {
+    return "black";
+  } else {
+    if (answerIndex === index) {
+      if (isCorrect === true) {
+        return "white";
+      }else{
+        return "white"
+      }
+    }
+  }
 };

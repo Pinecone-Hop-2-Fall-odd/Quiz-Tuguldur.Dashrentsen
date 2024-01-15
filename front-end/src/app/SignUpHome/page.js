@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { BACK_END_URL } from "@/utils/backend-url";
 
 export default function SignUp() {
   const [signUpData, setSignUpData] = useState({});
@@ -11,7 +12,7 @@ export default function SignUp() {
 
   const handleSignUp = async () => {
     const data = await axios
-      .post("http://localhost:8000/user", {
+      .post(`${BACK_END_URL}/user`, {
         email: signUpData.email,
         password: signUpData.password,
         userName: signUpData.userName,
@@ -27,10 +28,10 @@ export default function SignUp() {
   };
 
   return (
-    <div className="bg-gray w-screen h-screen flex justify-center items-center">
+    <div className="bg-[#DDDFE5] w-screen h-screen flex justify-center items-center">
       <div
         relative
-        className="w-[600px] h-[600px] bg-white border-[1px] border-black border-solid  flex flex-col items-center pt-[20px] gap-[40px] "
+        className="w-[26.785714285714285vw] h-[51.150895140664964vh] bg-white flex flex-col items-center pt-[1.7050298380221653vh] gap-[3.4100596760443307vh] "
       >
         <h1 className="text-[40px]">Sign in to the game</h1>
         <input
@@ -38,7 +39,7 @@ export default function SignUp() {
           id="usernameInput"
           name="usernameInput"
           placeholder="Username"
-          className="text-[20px] bg-gray border-solid border-gray border-[1px] w-[350px] h-[60px] "
+          className="text-[20px] bg-gray border-solid border-gray border-[1px] w-[15.625vw] h-[5.115089514066496vh] "
           value={signUpData.userName}
           onChange={(e) =>
             setSignUpData((prev) => ({ ...prev, userName: e.target.value }))
@@ -50,7 +51,7 @@ export default function SignUp() {
           id="emailInput"
           name="emailInput"
           placeholder="Email"
-          className="text-[20px] bg-gray border-solid border-gray border-[1px] w-[350px] h-[60px] "
+          className="text-[20px] bg-gray border-solid border-gray border-[1px] w-[15.625vw] h-[5.115089514066496vh] "
           onChange={(e) =>
             setSignUpData((prev) => ({ ...prev, email: e.target.value }))
           }
@@ -61,20 +62,20 @@ export default function SignUp() {
           id="passwordInput"
           name="passwordInput"
           placeholder="Password"
-          className="text-[20px] bg-gray border-solid border-gray border-[1px] w-[350px] h-[60px] "
+          className="text-[20px] bg-gray border-solid border-gray border-[1px] w-[15.625vw] h-[5.115089514066496vh] "
           onChange={(e) =>
             setSignUpData((prev) => ({ ...prev, password: e.target.value }))
           }
         ></input>
         <button
-          className="text-white bg-[#1A8BBB] w-[350px] h-[60px]"
+          className="text-white bg-[#1A8BBB] w-[15.625vw] h-[5.115089514066496vh]"
           onClick={handleSignUp}
         >
           Sign up
         </button>
         <button
           onClick={() => router.push("/LogInHome")}
-          className="text-[#1A8BBB] absolute top-[783px] right-[950px] text-[15px] bg-white"
+          className="text-[#1A8BBB] absolute top-[66.75191815856778vh] right-[42.410714285714285vw] text-[15px] bg-white"
         >
           Already have an account ?
         </button>
