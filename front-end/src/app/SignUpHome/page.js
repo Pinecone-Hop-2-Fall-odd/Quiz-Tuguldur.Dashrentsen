@@ -33,13 +33,13 @@ export default function SignUp() {
         relative
         className="w-[26.785714285714285vw] h-[51.150895140664964vh] bg-white flex flex-col items-center pt-[1.7050298380221653vh] gap-[3.4100596760443307vh] "
       >
-        <h1 className="text-[40px]">Sign in to the game</h1>
+        <h1 className="text-[1.7857142857142858vw]">Sign in to the game</h1>
         <input
           type="text"
           id="usernameInput"
           name="usernameInput"
           placeholder="Username"
-          className="text-[20px] bg-gray border-solid border-gray border-[1px] w-[15.625vw] h-[5.115089514066496vh] "
+          className="text-[0.8928571428571429vw] bg-gray border-solid border-gray border-[1px] w-[15.625vw] h-[5.115089514066496vh] "
           value={signUpData.userName}
           onChange={(e) =>
             setSignUpData((prev) => ({ ...prev, userName: e.target.value }))
@@ -51,7 +51,7 @@ export default function SignUp() {
           id="emailInput"
           name="emailInput"
           placeholder="Email"
-          className="text-[20px] bg-gray border-solid border-gray border-[1px] w-[15.625vw] h-[5.115089514066496vh] "
+          className="text-[0.8928571428571429vw] bg-gray border-solid border-gray border-[1px] w-[15.625vw] h-[5.115089514066496vh] "
           onChange={(e) =>
             setSignUpData((prev) => ({ ...prev, email: e.target.value }))
           }
@@ -62,7 +62,7 @@ export default function SignUp() {
           id="passwordInput"
           name="passwordInput"
           placeholder="Password"
-          className="text-[20px] bg-gray border-solid border-gray border-[1px] w-[15.625vw] h-[5.115089514066496vh] "
+          className="text-[0.8928571428571429vw] bg-gray border-solid border-gray border-[1px] w-[15.625vw] h-[5.115089514066496vh] "
           onChange={(e) =>
             setSignUpData((prev) => ({ ...prev, password: e.target.value }))
           }
@@ -75,7 +75,7 @@ export default function SignUp() {
         </button>
         <button
           onClick={() => router.push("/LogInHome")}
-          className="text-[#1A8BBB] absolute top-[66.75191815856778vh] right-[42.410714285714285vw] text-[15px] bg-white"
+          className="text-[#1A8BBB] absolute top-[66.75191815856778vh] right-[42.410714285714285vw] text-[0.6696428571428571vw] bg-white"
         >
           Already have an account ?
         </button>

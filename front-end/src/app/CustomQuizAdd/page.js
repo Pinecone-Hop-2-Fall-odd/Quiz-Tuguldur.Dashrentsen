@@ -81,14 +81,14 @@ export default function HomePage() {
   return (
     <div class="relative gap-[0.8928571428571429vw] flex-row bg-[#DDDFE5]  w-screen h-screen flex justify-center items-center ">
       <div className="flex flex-col  gap-[1.7050298380221653vh] bg-[#DDDFE5] w-[26.785714285714285vw] h-[68.20119352088662vh] ">
-        <div className="flex flex justify-center items-center text-[40px] font-bold text-white w-[100%] h-[7.672634271099744vh] bg-[#1A8BBB]">
+        <div className="flex flex justify-center items-center text-[1.7857142857142858vw] font-bold text-white w-[100%] h-[7.672634271099744vh] bg-[#1A8BBB]">
           Quiz Information
         </div>
         <div className=" items-center flex flex-col gap-[0.8525149190110827vh] py-[2.557544757033248vh] px-[0.8928571428571429vw] bg-white w-[100%] h-[95%]">
           <div className=" border-b-[1px] border-solid border-[#50566B] flex flex-row gap-[5.357142857142857vw] w-auto h-auto pb-[0.8525149190110827vh] justify-start items-center  ">
-            <h1 className="text-[25px] text-[#50566B]">Quiz Name</h1>
+            <h1 className="text-[1.1160714285714286vw] text-[#50566B]">Quiz Name</h1>
             <input
-              className="border-[1px] border-solid border-[#50566B] rounded-[5px] w-[13.392857142857142vw] h-[4.262574595055414vh]"
+              className="border-[1px] border-solid border-[#50566B] rounded-[1.1160714285714286vw] w-[13.392857142857142vw] h-[4.262574595055414vh]"
               type="text"
               onChange={(e) =>
                 setQuizName((prev) => ({
@@ -99,11 +99,11 @@ export default function HomePage() {
               value={quizName?.quizName}
             />
           </div>
-          <h1 className=" text[30px] text-[#50566B]">You're Questions:</h1>
+          <h1 className=" text[1.3392857142857142vw] text-[#50566B]">You're Questions:</h1>
           <div className="flex flex-col w-auto h-auto">
             {questions?.map((question, index) => (
               <div className="w-auto h-auto">
-                <h1 className="text-[25px] text-[#50566B]">
+                <h1 className="text-[1.1160714285714286vw] text-[#50566B]">
                   {index}.{question?.question}?
                 </h1>
               </div>
@@ -111,7 +111,7 @@ export default function HomePage() {
           </div>
           <button
             onClick={() => addQuiz()}
-            className="active:bg-sky-900 shadow-lg shadow-[#1A8BBB] text-white text-[16px] font-[700] rounded-[30px] w-[6.741071428571429vw] h-[4.262574595055414vh] bg-[#1A8BBB]"
+            className="font-[700] active:bg-sky-900 shadow-lg shadow-[#1A8BBB] text-white text-[0.7142857142857143vw] rounded-[1.3392857142857142vw] w-[6.741071428571429vw] h-[4.262574595055414vh] bg-[#1A8BBB]"
           >
             Finish Quiz
           </button>
@@ -119,9 +119,9 @@ export default function HomePage() {
       </div>
       <div className="gap-[1.7050298380221653vh] p-[20px] w-[17.5vw] h-auto bg-white justify-center items-center flex flex-col ">
         <div className=" border-b-[0.08525149190110827vh] border-solid border-[#50566B] flex flex-row gap-[1.7857142857142858vw] w-[15.625vw] h-[4.262574595055414vh] justify-start items-center  ">
-          <h1 className="text-[20px] text-[#50566B]">Question</h1>
+          <h1 className="text-[0.8928571428571429vw] text-[#50566B]">Question</h1>
           <input
-            className="border-[1px] border-solid border-[#50566B] rounded-[5px] w-[9.821428571428571vw] h-[2.557544757033248vh]"
+            className="border-[1px] border-solid border-[#50566B] rounded-[0.22321428571428573vw] w-[9.821428571428571vw] h-[2.557544757033248vh]"
             type="text"
             onChange={(e) =>
               setAddQuizData((prev) => ({ ...prev, question: e.target.value }))
@@ -130,9 +130,9 @@ export default function HomePage() {
           />
         </div>
         <div className=" border-b-[1px] border-solid border-[#50566B] flex flex-row gap-[1.7857142857142858vw] w-[15.625vw] h-[4.262574595055414vh] justify-start items-center  ">
-          <h1 className="text-[20px] text-[#50566B]">Answer A</h1>
+          <h1 className="text-[0.8928571428571429vw] text-[#50566B]">Answer A</h1>
           <input
-            className="border-[1px] border-solid border-[#50566B] rounded-[5px] w-[9.821428571428571vw] h-[2.557544757033248vh]"
+            className="border-[1px] border-solid border-[#50566B] rounded-[0.22321428571428573vw] w-[9.821428571428571vw] h-[2.557544757033248vh]"
             type="text"
             onChange={(e) =>
               setAddQuizData((prev) => ({ ...prev, answerA: e.target.value }))
@@ -141,9 +141,9 @@ export default function HomePage() {
           />
         </div>
         <div className=" border-b-[1px] border-solid border-[#50566B] flex flex-row gap-[1.7857142857142858vw] w-[15.625vw] h-[4.262574595055414vh] justify-start items-center  ">
-          <h1 className="text-[20px] text-[#50566B]">Answer B</h1>
+          <h1 className="text-[0.8928571428571429vw] text-[#50566B]">Answer B</h1>
           <input
-            className="border-[1px] border-solid border-[#50566B] rounded-[5px] w-[9.821428571428571vw] h-[2.557544757033248vh]"
+            className="border-[1px] border-solid border-[#50566B] rounded-[0.22321428571428573vw] w-[9.821428571428571vw] h-[2.557544757033248vh]"
             type="text"
             onChange={(e) =>
               setAddQuizData((prev) => ({ ...prev, answerB: e.target.value }))
@@ -151,10 +151,10 @@ export default function HomePage() {
             value={addQuizData.answerB}
           />
         </div>
-        <div className=" border-b-[1px] border-solid border-[#50566B] flex flex-row gap-[40px] w-[15.625vw] h-[4.262574595055414vh] justify-start items-center  ">
-          <h1 className="text-[20px] text-[#50566B]">Answer C</h1>
+        <div className=" border-b-[1px] border-solid border-[#50566B] flex flex-row gap-[1.7857142857142858vw] w-[15.625vw] h-[4.262574595055414vh] justify-start items-center  ">
+          <h1 className="text-[0.8928571428571429vw] text-[#50566B]">Answer C</h1>
           <input
-            className="border-[1px] border-solid border-[#50566B] rounded-[5px] w-[9.821428571428571vw] h-[2.557544757033248vh]"
+            className="border-[1px] border-solid border-[#50566B] rounded-[0.22321428571428573vw] w-[9.821428571428571vw] h-[2.557544757033248vh]"
             type="text"
             onChange={(e) =>
               setAddQuizData((prev) => ({ ...prev, answerC: e.target.value }))
@@ -163,9 +163,9 @@ export default function HomePage() {
           />
         </div>
         <div className=" border-b-[1px] border-solid border-[#50566B] flex flex-row gap-[1.7857142857142858vw] w-[15.625vw] h-[4.262574595055414vh] justify-start items-center  ">
-          <h1 className="text-[20px] text-[#50566B]">Answer D</h1>
+          <h1 className="text-[0.8928571428571429vw] text-[#50566B]">Answer D</h1>
           <input
-            className="border-[1px] border-solid border-[#50566B] rounded-[5px] w-[9.821428571428571vw] h-[2.557544757033248vh]"
+            className="border-[1px] border-solid border-[#50566B] rounded-[0.22321428571428573vw] w-[9.821428571428571vw] h-[2.557544757033248vh]"
             type="text"
             onChange={(e) =>
               setAddQuizData((prev) => ({ ...prev, answerD: e.target.value }))
@@ -173,9 +173,9 @@ export default function HomePage() {
             value={addQuizData.answerD}
           />
         </div>
-        <div className=" border-b-[0.08525149190110827vh] border-solid border-[#50566B] flex flex-row gap-[1.7857142857142858vw] w-[15.625vw] h-[4.262574595055414vh] justify-start items-center  ">
-          <h1 className="text-[20px] text-[#50566B]">Correct Answer</h1>
-          <label className="border-[1px] border-solid border-[#50566B] rounded-[5px] w-[9.821428571428571vw] h-[2.557544757033248vh]">
+        <div className=" border-b-[1px] border-solid border-[#50566B] flex flex-row gap-[1.7857142857142858vw] w-[15.625vw] h-[4.262574595055414vh] justify-start items-center  ">
+          <h1 className="text-[0.8928571428571429vw] text-[#50566B]">Correct Answer</h1>
+          <label className="border-[1px] border-solid border-[#50566B] rounded-[0.22321428571428573vw] w-[9.821428571428571vw] h-[2.557544757033248vh]">
             <select
               id="answers"
               onChange={(e) =>
@@ -196,12 +196,12 @@ export default function HomePage() {
         </div>
         <button
           onClick={() => addQuestion()}
-          className="active:bg-sky-900 shadow-lg shadow-[#1A8BBB] text-white text-[16px] font-[700] rounded-[30px] w-[6.741071428571429vw] h-[4.262574595055414vh] bg-[#1A8BBB]"
+          className="active:bg-sky-900 shadow-lg shadow-[#1A8BBB] text-white text-[0.7142857142857143vw] font-[700] rounded-[1.3392857142857142vw] w-[6.741071428571429vw] h-[4.262574595055414vh] bg-[#1A8BBB]"
         >
           Add Question
         </button>
       </div>
-      <button onClick={() => router.push("/CustomQuizMenu")} className="active:bg-sky-900 absolute bottom-[3.4100596760443307vh] right-[1.3392857142857142vw] bg-[#1A8BBB] h-[80px] w-[150px] rounded-[25px] text-[25px] text-white ">Cancel</button>
+      <button onClick={() => router.push("/CustomQuizMenu")} className="active:bg-sky-900 absolute bottom-[3.4100596760443307vh] right-[1.3392857142857142vw] bg-[#1A8BBB] h-[6.820119352088661vh] w-[6.696428571428571vw] rounded-[1.1160714285714286vw] text-[1.1160714285714286vw] text-white ">Cancel</button>
     </div>
   );
 }

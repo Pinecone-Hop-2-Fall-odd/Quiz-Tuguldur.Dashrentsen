@@ -20,13 +20,13 @@ export default function LogIn() {
       router.push("/");
     }
   };
-
+console.log(`${BACK_END_URL}/login`)
   return (
     <div className="bg-[#DDDFE5] w-screen h-screen flex justify-center items-center">
       <div
         className="w-[26.785714285714285vw] h-[42.62574595055413vh] bg-white flex flex-col items-center pt-[1.7050298380221653vh] gap-[3.4100596760443307vh] "
       >
-        <h1 className="text-[40px]">Log In to the game</h1>
+        <h1 className="text-[1.7857142857142858vw]">Log In to the game</h1>
         <input
           value={loginData.email}
           type="text"
@@ -55,7 +55,7 @@ export default function LogIn() {
         >
           Log In
         </button>
-        <button onClick={() => router.push("/SignUpHome")} className="w-[100%] h-auto pl-[8.482142857142858vw] text-[#1A8BBB] text-[15px] bg-white">Don't have an account?</button>
+        <button onClick={() => router.push("/SignUpHome")} className="active:bg-sky-900 rounded-[2.232142857142857vw] w-[100%] h-auto pl-[8.482142857142858vw] text-[#1A8BBB] text-[15px] bg-white">Don't have an account?</button>
       </div>
     </div>
   );

@@ -36,18 +36,18 @@ export default function userProfile() {
       <div className="relative pl-[3.169642857142857vw] border-solid border-black border-[1px] w-[22.321428571428573vw] h-[42.62574595055413vh] flex justify-center items-start flex-col bg-white">
         <div className="flex flex-row gap-[0.8928571428571429vw]">
           <div className="flex flex-col items-end ">
-            <h1 className="text-[#50566B]  text-[20px]">
+            <h1 className="text-[#50566B]  text-[0.8928571428571429vw]">
               Username:
             </h1>
-            <h1 className="text-[#50566B] text-[20px] ">
+            <h1 className="text-[#50566B] text-[0.8928571428571429vw] ">
               Email:
             </h1>
           </div>
           <div>
-            <h1 className=" text-[#50566B]  text-[20px]">
+            <h1 className=" text-[#50566B]  text-[0.8928571428571429vw]">
               {userData?.data?.user?.userName}
             </h1>
-            <h1 className="text-[#50566B] text-[20px] ">
+            <h1 className="text-[#50566B] text-[0.8928571428571429vw] ">
               {userData?.data?.user?.email}
             </h1>
           </div>
@@ -55,13 +55,13 @@ export default function userProfile() {
         <div className="flex flex-row gap-[0.44642857142857145vw] absolute bottom-[4.262574595055414vh] right-[3.125vw]">
           <button
             onClick={() => router.back()}
-            className="active:bg-sky-900 text-[20px] rounded-[30px] text-white bg-[#1A8BBB] w-[4.464285714285714vw] h-[4.6888320545609545vh]"
+            className="active:bg-sky-900 text-[0.8928571428571429vw] rounded-[1.3392857142857142vw] text-white bg-[#1A8BBB] w-[4.464285714285714vw] h-[4.6888320545609545vh]"
           >
             Back
           </button>
           <button
             onClick={LogOut}
-            className="active:bg-red-700 text-[20px] rounded-[30px] active text-white bg-red-600 w-[4.464285714285714vw] h-[4.6888320545609545vh]"
+            className="active:bg-red-700 text-[0.8928571428571429vw] rounded-[1.3392857142857142vw] active text-white bg-red-600 w-[4.464285714285714vw] h-[4.6888320545609545vh]"
           >
             Log Out
           </button>

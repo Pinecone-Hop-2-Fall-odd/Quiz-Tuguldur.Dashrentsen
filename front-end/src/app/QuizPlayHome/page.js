@@ -60,28 +60,28 @@ export default function HomePage() {
     return (
       <div class="justify-center items-center  relative bg-gray-400 w-screen h-screen flex-col flex gap-[3.4100596760443307vh]">
         <div className="absolute top-[0px] w-screen h-[11.508951406649617vh] bg-white flex items-center ">
-          <h1 className="absolute left-[39.732142857142854vw] font-bold text-[50px] text-[#50566B] font-montserrat">
+          <h1 className="absolute left-[39.732142857142854vw] font-bold text-[2.232142857142857vw] text-[#50566B] font-montserrat">
             "Congratulations"
           </h1>
         </div>
-        <div className="relative flex flex-col items-center pt-[3.4100596760443307vh] bg-white w-[31.25vw] h-[34.10059676044331vh] rounded-[30px]">
-          <h1 className="font-bold text-[50px] text-[#50566B] flex flex-col items-center">
+        <div className="relative flex flex-col items-center pt-[3.4100596760443307vh] bg-white w-[31.25vw] h-[34.10059676044331vh] rounded-[1.3392857142857142vw]">
+          <h1 className="font-bold text-[2.232142857142857vw] text-[#50566B] flex flex-col items-center">
             {userData?.data?.user[0]?.userName}
           </h1>
-          <h1 className="font-bold text-[50px] text-[#50566B]">
+          <h1 className="font-bold text-[2.232142857142857vw] text-[#50566B]">
             You got {isCorrectCounter} out of {quizdata?.data?.quizs.length}
             right
           </h1>
           <div className="right-[4.464285714285714vw] flex flex-row gap-[1.3392857142857142vw] absolute bottom-[8.525149190110827vh] ">
             <button
               onClick={() => router.push("/CategoriesHome")}
-              className="text-white text-[20px] bg-[#1A8BBB] w-[4.464285714285714vw] h-[5.115089514066496vh] rounded-[10px] "
+              className="text-white text-[0.8928571428571429vw] bg-[#1A8BBB] w-[4.464285714285714vw] h-[5.115089514066496vh] rounded-[0.44642857142857145vw] "
             >
               Categories
             </button>
             <button
               onClick={() => router.push("/HomePageHome")}
-              className="text-white text-[20px] bg-[#1A8BBB] w-[4.464285714285714vw] h-[5.115089514066496vh] rounded-[10px]"
+              className="text-white text-[0.8928571428571429vw] bg-[#1A8BBB] w-[4.464285714285714vw] h-[5.115089514066496vh] rounded-[0.44642857142857145vw]"
             >
               Home
             </button>
@@ -96,10 +96,10 @@ export default function HomePage() {
   return (
     <div class=" relative bg-white  w-screen h-screen flex-col flex gap-[3.4100596760443307vh]">
       <div className="absolute top-[0px] w-screen h-[11.508951406649617vh] bg-[#1A8BBB] flex flex-row justify-center  items-center ">
-        <h1 className=" font-bold text-[50px] text-white font-montserrat">
+        <h1 className=" font-bold text-[2.232142857142857vw] text-white font-montserrat">
           {quizdata?.data?.quizs[counter]?.question}
         </h1>
-        <h1 className="absolute right-[4.464285714285714vw] font-bold text-[50px] text-white  font-montserrat">
+        <h1 className="absolute right-[4.464285714285714vw] font-bold text-[2.232142857142857vw] text-white  font-montserrat">
           {quizdata?.data?.quizs.length}/{counter}
         </h1>
       </div>
@@ -114,7 +114,7 @@ export default function HomePage() {
               }
             }
    
-            className="pl-[0.44642857142857145vw] flex justify-start items-center font-[550]  text-[80px] w-[44.642857142857146vw] h-[21.312872975277067vh]  bg-white border-solid border-[1px] border-black"
+            className="pl-[0.44642857142857145vw] flex justify-start items-center font-[550]  text-[3.5714285714285716vw] w-[44.642857142857146vw] h-[21.312872975277067vh]  bg-white border-solid border-[1px] border-black"
           >
             {answer?.answer}
           </button>
